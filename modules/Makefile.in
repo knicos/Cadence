@@ -1,0 +1,13 @@
+SHELL=/bin/sh
+MODULE_PATH=@prefix@/share/cadence/modules/
+MODULES=@MODULES@
+
+default::
+	for a in $(MODULES); do cd $$a; make; cd ..; done
+
+install::
+	for a in $(MODULES); do cd $$a; make install; cd ..; done
+
+clean::
+	for a in $(MODULES); do cd $$a; make clean; cd ..; done
+

@@ -1,0 +1,22 @@
+.ui = (new
+	browser = (new
+		root = (@root notations dasm variables)
+		useid = true
+		hideid = true
+		hideparent = false
+		hidekey = true
+		refreshrate = 50
+	)
+);
+
+@ui = (.ui);
+
+.modules ui = (new type=Module
+	file = (new type=LocalFile
+		filename = "cadence_ui.so"
+	)
+	base = (.)
+	update = true
+	frequency = 0.00
+);
+

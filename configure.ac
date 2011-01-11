@@ -621,7 +621,8 @@ WGDLIBS="-lGL -lGLU -lX11 -lXxf86vm"
 ##############################################################################
 # Select which modules to build
 ##############################################################################
-MODULES="ui basic_agents xnet webservice wgd_base wgd_resources_base wgd_base_2d wgd_base_3d wgd_heightmap wgd_input wgd_models wgd_widgets"
+MODULES="ui"
+#MODULES="ui basic_agents xnet webservice wgd_base wgd_resources_base wgd_base_2d wgd_base_3d wgd_heightmap wgd_input wgd_models wgd_widgets"
 
 AC_ARG_ENABLE(eden,
 	[  --enable-eden    Build and install the EDEN module],
@@ -647,7 +648,7 @@ AC_SUBST(WGDLIBS)
 AC_SUBST(QTINCLUDES)
 AC_SUBST(MODULES)
 
-AC_OUTPUT(Makefile libcadence/Makefile libcadence/src/Makefile libcadence/src/doste/Makefile libcadence/src/library/Makefile libcadence/scripts/Makefile loader/Makefile loader/cadence )
+AC_OUTPUT(Makefile libcadence/Makefile libcadence/src/Makefile libcadence/src/doste/Makefile libcadence/src/library/Makefile libcadence/scripts/Makefile loader/Makefile loader/cadence modules/Makefile modules/ui/Makefile modules/ui/src/Makefile modules/ui/data/Makefile modules/ui/data/ui/Makefile modules/ui/scripts/Makefile modules/ui/scripts/ui/Makefile )
 
 ####################
 
