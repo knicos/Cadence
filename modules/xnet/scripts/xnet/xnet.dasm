@@ -1,0 +1,24 @@
+.xnet = (new);
+@xnet = (.xnet);
+
+@xnet connections = (new);
+@xnet listen = false;
+@xnet port = 9000;
+@xnet users = (new);
+
+.modules xnet = (new type=Module
+	file = (new type=LocalFile
+		filename = "cadence_xnet.so"
+	)
+	base = (.xnet)
+	update = true
+	frequency = 0.0
+);
+
+@prototypes xnet_connection = (new
+	type = XNetConnection
+	port = 9000
+	address = "localhost"
+	username = "root"
+	connect = true
+);

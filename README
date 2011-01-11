@@ -1,0 +1,10 @@
+Cadence
+
+Build Instructions:
+autoconf
+./configure
+make
+sudo make install
+
+To run cadence:
+cadence

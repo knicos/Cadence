@@ -1,0 +1,11 @@
+*.o
+Makefile
+configure
+config.status
+config.h
+config.log
+*.so
+autom4te.cache
+cadence
+cadence.bin
+*.a

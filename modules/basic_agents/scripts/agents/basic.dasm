@@ -1,0 +1,32 @@
+.modules basic_agents = (new type=Module
+	file = (new type=LocalFile
+		filename = "cadence_basic_agents.so"
+	)
+	base = (.)
+	update = false
+);
+
+@prototypes assigner = (new
+	type = Assigner
+	condition = false
+	object = null
+	property = null
+	value = null
+);
+
+@prototypes definer_is = (new
+	type = IsDefiner
+	condition = false
+	object = null
+	property = null
+	definition = null
+);
+
+@prototypes definer_willbe = (new
+	type = BecomesDefiner
+	condition = false
+	object = null
+	property = null
+	definition = null
+);
+
