@@ -1,0 +1,24 @@
+SHELL=/bin/sh
+
+CC=@CC@
+AR=ar
+CPP=@CXX@
+CPPFLAGS=@CXXFLAGS@
+LDFLAGS=@LDFLAGS@
+INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include
+
+SOURCES=buffer.cpp coid.cpp context.cpp definition.cpp doste.cpp event.cpp handler.cpp local.cpp names.cpp number.cpp oid.cpp processor.cpp virtualobject.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+LIB=libdoste.a
+
+all: $(SOURCES) $(LIB)
+
+$(LIB): $(OBJECTS)
+	$(AR) cq $@ $(OBJECTS)
+
+.cpp.o:
+	$(CPP) -fPIC -c $(CPPFLAGS) $(INCLUDES) $< -o $@
+
+clean:
+	rm -f *.o
+	rm -f *.a

@@ -1,0 +1,11 @@
+#Boolean logic operations
+#Nicolas Pope
+
+true not = false;
+false not = true;
+
+true and = (new id = TrueAnd true = true false = false);
+false and = (new id = FalseAnd true = false false = false);
+
+true or = (new id = TrueOr true = true false = true);
+false or = (new id = FalseOr true = true false = false);

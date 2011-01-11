@@ -1,0 +1,24 @@
+SHELL=/bin/sh
+
+CC=@CC@
+AR=ar
+CPP=@CXX@
+CPPFLAGS=@CXXFLAGS@
+LDFLAGS=@LDFLAGS@
+INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include
+
+SOURCES=dmsg.cpp dstring.cpp file.cpp stream.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+LIB=libcadencelib.a
+
+all: $(SOURCES) $(LIB)
+
+$(LIB): $(OBJECTS)
+	$(AR) cq $@ $(OBJECTS)
+
+.cpp.o:
+	$(CPP) -fPIC -c $(CPPFLAGS) $(INCLUDES) $< -o $@
+
+clean:
+	rm -f *.o
+	rm -f *.a

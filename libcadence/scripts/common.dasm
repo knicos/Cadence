@@ -1,0 +1,17 @@
+#Shortcut variables.
+@math = (.math);
+@root = (.);
+.id = root;
+
+#A wrapper to allow math random to be used normally
+@math random is { @root _random void };
+
+#Boolean operators
+%include "boolean.dasm";
+
+.lasttime = 0.0;
+.lasttime := { .time };
+.itime is { .time - (.lasttime) + 0.0001 };
+
+.prototypes = (new id=Prototypes);
+@prototypes = (.prototypes);

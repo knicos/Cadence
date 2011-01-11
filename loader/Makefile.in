@@ -1,0 +1,29 @@
+SHELL=/bin/sh
+
+CC=@CC@
+AR=ar
+CPP=@CXX@
+CPPFLAGS=@CXXFLAGS@
+LDFLAGS=@LDFLAGS@
+INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include
+BIN_PATH=@prefix@/bin
+
+SOURCES=linux.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=cadence.bin
+
+all: $(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CPP) $(LDFLAGS) -L../libcadence/ -o ./$@ $(OBJECTS) -lcadence
+
+.cpp.o:
+	$(CPP) -c $(CPPFLAGS) $(INCLUDES) $< -o $@
+
+install:
+	install -d "$(BIN_PATH)"
+	install -m 755 cadence.bin "$(BIN_PATH)"
+	install -m 755 cadence "$(BIN_PATH)"
+
+clean:
+	rm *.o

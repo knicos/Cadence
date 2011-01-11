@@ -1,0 +1,28 @@
+SHELL=/bin/sh
+
+CC=@CC@
+CPP=@CXX@
+AR=ar
+CPPFLAGS=@CXXFLAGS@
+LDFLAGS=@LDFLAGS@
+INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include
+
+SOURCES=memory.cpp agenthandler.cpp dasm.cpp directory.cpp cadence.cpp messages.cpp module.cpp notation.cpp softagent.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+LIB=libcadence.so
+DOSTEOBJ=./doste/libdoste.a ./library/libcadencelib.a
+
+all: $(SOURCES) $(LIB)
+
+$(LIB): $(OBJECTS)
+	cd doste; make
+	cd library; make
+	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS) $(DOSTEOBJ)
+
+.cpp.o:
+	$(CPP) -fPIC -c $(CPPFLAGS) $(INCLUDES) $< -o $@
+
+clean:
+	rm -f *.o
+	cd doste; make clean
+	cd library; make clean

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export LD_LIBRARY_PATH="@prefix@/lib:@prefix@/share/cadence/modules"
+export CADENCE_SCRIPTS="@prefix@/share/cadence/scripts"
+export CADENCE_PATH=".:@prefix@/share/cadence/scripts:@prefix@/share/cadence/projects:@prefix@/share/cadence"
+export CADENCE_MODULES="@prefix@/share/cadence/modules"
+export CADENCE_TKEDEN="@prefix@/share/cadence/lib-tkeden"
+@prefix@/bin/cadence.bin $*

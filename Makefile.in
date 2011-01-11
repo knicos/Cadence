@@ -1,0 +1,20 @@
+SHELL=/bin/sh
+
+default:: cadence
+
+cadence::
+	cd libcadence; make
+	cd loader; make
+	#cd modules; make
+
+install:: cadence
+	cd ./libcadence; make install
+	#cd ./modules; make install
+	#cd ./models; make install
+	cd ./loader; make install
+
+
+clean::
+	cd libcadence; make clean
+	cd loader; make clean
+	#cd modules; make clean
