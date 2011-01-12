@@ -1,0 +1,23 @@
+SHELL=/bin/sh
+
+CC=@CC@
+CPP=@CXX@
+CPPFLAGS=@CXXFLAGS@
+LDFLAGS=@LDFLAGS@ @WGDLIBS@ -L../../wgd_base -L../../wgd_resources_base -lcadence_wgd_base -lcadence_wgd_resources_base
+INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include -I@top_srcdir@/modules/wgd_base_2d/include -I@top_srcdir@/modules/wgd_base/include -I@top_srcdir@/modules/wgd_resources_base/include -I@top_srcdir@/modules/wgd_base_3d/include
+
+SOURCES=base3d.cpp camera3d.cpp frustum.cpp iline.cpp instance3d.cpp iprimitive.cpp isprite3d.cpp render.cpp scene3d.cpp sprite3d.cpp text3d.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+LIB=libcadence_wgd_base_3d.so
+
+all: $(SOURCES) $(LIB)
+
+$(LIB): $(OBJECTS)
+	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS)
+
+
+.cpp.o:
+	$(CPP) -fPIC -c $(CPPFLAGS) $(INCLUDES) $< -o $@
+
+clean:
+	rm *.o

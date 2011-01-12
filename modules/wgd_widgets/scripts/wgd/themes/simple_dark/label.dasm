@@ -1,0 +1,11 @@
+#label prototype
+@prototypes label = (new
+	type = Widget
+	visible = true
+	textcolour = (new r = 0.9 g = 0.9 b = 0.9 a = 1.0 )
+	font is { @widgets font }
+	x = 0 y = 0
+	width = 150
+	height = 24
+	caption = "Label"
+);

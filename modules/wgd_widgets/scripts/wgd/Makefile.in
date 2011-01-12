@@ -1,0 +1,9 @@
+SHELL=/bin/sh
+SCRIPT_PATH=@prefix@/share/cadence/scripts/wgd
+
+SCRIPTS=widgets.dasm
+
+install::
+	cd themes; make install
+	install -d "$(SCRIPT_PATH)"
+	install -m 644 $(SCRIPTS) "$(SCRIPT_PATH)"

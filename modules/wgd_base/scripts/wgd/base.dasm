@@ -1,0 +1,11 @@
+%include "wgd/window.dasm";
+%include "wgd/input.dasm";
+
+.modules wgd_base = (new type=Module
+	file = (new type=LocalFile
+		filename = "libcadence_wgd_base.so"
+	)
+	base = (this)
+	update = true
+	frequency = 0.02
+);

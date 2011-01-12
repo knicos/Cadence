@@ -1,0 +1,42 @@
+#Simpel_dark theme script.
+
+this widgets sprite = (new
+	type = Sprite
+	texture = (new
+		type = Texture
+		file = (new
+			type = LocalFile
+			base = (this datadir)
+			filename = "data/wgd/simple_dark.png"
+		)
+		compress = false
+		mipmap = false
+		nearest = true
+	)
+	columns = 4
+	rows = 4
+	frames = 16
+	border = 6
+);
+
+this widgets tint = (new r=1.0 g=1.0 b=1.0 a=1.0);
+
+this widgets font = (new
+	type = Font
+	size = 12
+	name = "helvetica"
+	bold = false
+);
+
+%include "wgd/themes/simple_dark/widget.dasm";
+%include "wgd/themes/simple_dark/button.dasm";
+%include "wgd/themes/simple_dark/window.dasm";
+%include "wgd/themes/simple_dark/colours.dasm";
+%include "wgd/themes/simple_dark/trackbar1.dasm";
+%include "wgd/themes/simple_dark/label.dasm";
+%include "wgd/themes/simple_dark/scrollbar.dasm";
+%include "wgd/themes/simple_dark/editbox.dasm";
+%include "wgd/themes/simple_dark/listbox.dasm";
+%include "wgd/themes/simple_dark/textbox.dasm";
+%include "wgd/themes/simple_dark/popup.dasm";
+%include "wgd/themes/simple_dark/treeview.dasm";

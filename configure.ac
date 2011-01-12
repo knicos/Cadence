@@ -621,8 +621,7 @@ WGDLIBS="-lGL -lGLU -lX11 -lXxf86vm"
 ##############################################################################
 # Select which modules to build
 ##############################################################################
-MODULES="ui xnet basic_agents"
-#MODULES="ui basic_agents xnet webservice wgd_base wgd_resources_base wgd_base_2d wgd_base_3d wgd_heightmap wgd_input wgd_models wgd_widgets"
+MODULES="ui basic_agents xnet wgd_base wgd_resources_base wgd_base_2d wgd_base_3d wgd_heightmap wgd_input wgd_models wgd_widgets"
 
 AC_ARG_ENABLE(eden,
 	[  --enable-eden    Build and install the EDEN module],
@@ -648,7 +647,7 @@ AC_SUBST(WGDLIBS)
 AC_SUBST(QTINCLUDES)
 AC_SUBST(MODULES)
 
-AC_OUTPUT(Makefile libcadence/Makefile libcadence/src/Makefile libcadence/src/doste/Makefile libcadence/src/library/Makefile libcadence/scripts/Makefile loader/Makefile loader/cadence modules/Makefile modules/ui/Makefile modules/ui/src/Makefile modules/ui/data/Makefile modules/ui/data/ui/Makefile modules/ui/scripts/Makefile modules/ui/scripts/ui/Makefile modules/xnet/Makefile modules/xnet/src/Makefile modules/xnet/scripts/Makefile modules/xnet/scripts/xnet/Makefile modules/basic_agents/Makefile modules/basic_agents/src/Makefile modules/basic_agents/scripts/Makefile modules/basic_agents/scripts/agents/Makefile )
+AC_OUTPUT(Makefile libcadence/Makefile libcadence/src/Makefile libcadence/src/doste/Makefile libcadence/src/library/Makefile libcadence/scripts/Makefile loader/Makefile loader/cadence modules/Makefile modules/ui/Makefile modules/ui/src/Makefile modules/ui/data/Makefile modules/ui/data/ui/Makefile modules/ui/scripts/Makefile modules/ui/scripts/ui/Makefile modules/xnet/Makefile modules/xnet/src/Makefile modules/xnet/scripts/Makefile modules/xnet/scripts/xnet/Makefile modules/basic_agents/Makefile modules/basic_agents/src/Makefile modules/basic_agents/scripts/Makefile modules/basic_agents/scripts/agents/Makefile modules/wgd_base/Makefile modules/wgd_base/src/Makefile modules/wgd_base/scripts/Makefile modules/wgd_base/scripts/wgd/Makefile modules/wgd_base_2d/Makefile modules/wgd_base_2d/src/Makefile modules/wgd_base_2d/scripts/Makefile modules/wgd_base_2d/scripts/wgd/Makefile  modules/wgd_base_3d/Makefile modules/wgd_base_3d/src/Makefile modules/wgd_base_3d/scripts/Makefile modules/wgd_base_3d/scripts/wgd/Makefile modules/wgd_heightmap/Makefile modules/wgd_heightmap/src/Makefile modules/wgd_heightmap/scripts/Makefile modules/wgd_heightmap/scripts/wgd/Makefile modules/wgd_input/Makefile modules/wgd_input/src/Makefile modules/wgd_input/scripts/Makefile modules/wgd_input/scripts/wgd/Makefile modules/wgd_models/Makefile modules/wgd_models/src/Makefile modules/wgd_models/scripts/Makefile modules/wgd_models/scripts/wgd/Makefile modules/wgd_resources_base/Makefile modules/wgd_resources_base/src/Makefile modules/wgd_resources_base/scripts/Makefile modules/wgd_resources_base/scripts/wgd/Makefile modules/wgd_widgets/Makefile modules/wgd_widgets/src/Makefile modules/wgd_widgets/scripts/Makefile modules/wgd_widgets/scripts/wgd/Makefile modules/wgd_widgets/scripts/wgd/themes/Makefile modules/wgd_widgets/scripts/wgd/themes/simple_dark/Makefile modules/wgd_widgets/data/Makefile modules/wgd_widgets/data/wgd/Makefile )
 
 ####################
 

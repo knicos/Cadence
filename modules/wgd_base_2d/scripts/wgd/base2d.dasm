@@ -1,0 +1,6 @@
+this modules wgd_base2d = (new type=Module
+	file = (new type=LocalFile
+		filename = "libcadence_wgd_base_2d.so"
+	)
+	base = (this)
+);

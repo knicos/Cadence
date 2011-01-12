@@ -1,0 +1,22 @@
+
+@prototypes checkbox = (new union (@prototypes widget)
+	width = 150
+	height = 16
+	caption = "caption"
+	
+	textcolour = (new r = 0.9 g = 0.9 b = 0.9 a = 1.0 )
+	textx is { .height + 8 }
+
+	value = false
+	value is { if(.children box click) { .~value not } else { .~value }	}
+
+	children
+		%deep box = (new union (@prototypes widget)
+			width is {.height}
+			height is {. .. .. height}
+			mousedown is { .mouseover and (@widgets left) }
+			click is { .mousedown and (@widgets left not) }
+			frame is { if(.mouseover) 1 else if(. .. .. value) 2 else 0 } 
+		)
+	..
+);

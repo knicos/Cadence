@@ -1,0 +1,15 @@
+.window = (new type=GameWindow
+	id = WGDWindow
+	#width = 1920
+	#height = 2556
+	#width = 1920
+	#height = 1200
+	width = 800
+	height = 600
+	fullscreen = false 
+	colourdepth = 32
+	depthbuffer = 24
+	title = "Cadence UI (WGD-lib)"
+);
+
+@window = (.window);

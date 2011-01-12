@@ -1,0 +1,23 @@
+SHELL=/bin/sh
+
+CC=@CC@
+CPP=@CXX@
+CPPFLAGS=@CXXFLAGS@
+LDFLAGS=@LDFLAGS@ @WGDLIBS@ -L../../wgd_base -L../../wgd_resources_base -L../../wgd_base_3d -lcadence_wgd_base -lcadence_wgd_resources_base -lcadence_wgd_base_3d
+INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include -I@top_srcdir@/modules/wgd_heightmap/include -I@top_srcdir@/modules/wgd_base/include -I@top_srcdir@/modules/wgd_base_2d/include -I@top_srcdir@/modules/wgd_base_3d/include -I@top_srcdir@/modules/wgd_resources_base/include
+
+SOURCES=heightmap.cpp hmimagesource.cpp iheightmap.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+LIB=libcadence_wgd_heightmap.so
+
+all: $(SOURCES) $(LIB)
+
+$(LIB): $(OBJECTS)
+	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS)
+
+
+.cpp.o:
+	$(CPP) -fPIC -c $(CPPFLAGS) $(INCLUDES) $< -o $@
+
+clean:
+	rm *.o

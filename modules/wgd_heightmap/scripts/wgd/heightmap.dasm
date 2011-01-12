@@ -1,0 +1,6 @@
+this modules wgd_heightmap = (new type=Module
+	file = (new type=LocalFile
+		filename = "libcadence_wgd_heightmap.so"
+	)
+	base = (this)
+);

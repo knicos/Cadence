@@ -1,0 +1,13 @@
+SHELL=/bin/sh
+MODULE_PATH=@prefix@/share/cadence/modules/
+MODULE_LIB=libcadence_wgd_base2d.so
+
+default::wgd_base2d
+
+wgd_base2d::
+	cd src; make
+
+install::
+	cd scripts; make install
+	install -d "$(MODULE_PATH)"
+	install $(MODULE_LIB) "$(MODULE_PATH)"

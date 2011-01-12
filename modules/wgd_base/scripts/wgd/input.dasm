@@ -1,0 +1,27 @@
+.input = (new type=Input
+	id = WGDInput
+	keyboard = (new type=Keyboard
+		id = WGDKeyboard
+		keys = (new
+			escape = false
+		)
+	)
+	mouse = (new type=Mouse
+		id = WGDMouse
+		visible = true
+		buttons = (new
+			left = false
+			middle = false
+			right = false
+		)
+	)
+	wiimotes = (new
+		id = WGDWiimotes
+		find = void
+	)
+);
+
+@wiimotes = (this input wiimotes);
+@input = (this input);
+@keyboard = (this input keyboard);
+@mouse = (this input mouse);

@@ -1,0 +1,64 @@
+#this version of trackbar uses cloning
+
+@prototypes trackbar = (new union (@prototypes widget)
+	width = 225
+	height = 20
+	caption = "Label"
+	value is { .children blob value }
+	number = null
+	
+	children
+		%deep base = (new union (@prototypes widget)
+			frame = 2
+			width is { . .. .. width - 85 }
+			height = 8
+			x = 60
+			y = 4
+		)
+		%deep blob = (new union (@prototypes widget)
+			frame is { if(.grabbed) 1 else 0 }
+			width = 12
+			height = 18
+			y = 0
+			min = 60
+			max is { . .. .. width sub 25 }
+			
+			x is { .min + (. .. .. value * (.range)) }
+			
+			range is { .max - (.min) - (.width) }
+			
+			#dragable
+			mousedown is {.mouseover and (@widgets left)}
+			grabbed is {
+				if( .mousedown and (@widgets grabbed not) ) true 
+				else { if(@widgets left not ) false
+				else { .~grabbed }}
+			}
+			grabbed2 is {.grabbed}
+			grabx is { .grabbed; @widgets ~x - (.~x) }
+			dragx is { if(.grabbed2) { @widgets x - (.~grabx) - (.min) } else { .~dragx } }
+			
+			value is { 
+				if( .dragx < 0)  0.0
+				else { if(.dragx > (.range)) {
+					.dragx / (.range)
+				} else { 1.0 }}
+			}
+		)
+		
+		%deep value = (new
+			x is { . .. .. width - 25 }
+			y = 0
+			width = 25
+			height = 20
+			visible is { . .. .. number == null not }
+			%deep caption = (new
+				size = 2
+				0 = ' '
+				1 is { . .. .. number }
+			)
+			font is { @widgets font }
+			textcolour = (new r = 0.9 g = 0.9 b = 0.9 a = 1.0 )
+		)
+	)
+);

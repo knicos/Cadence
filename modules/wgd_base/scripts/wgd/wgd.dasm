@@ -1,0 +1,7 @@
+%include "wgd/base.dasm";
+%include "wgd/resources.dasm";
+%include "wgd/widgets.dasm";
+%include "wgd/base3d.dasm";
+%include "wgd/models.dasm";
+%include "wgd/wiimote.dasm";
+%include "wgd/heightmap.dasm";

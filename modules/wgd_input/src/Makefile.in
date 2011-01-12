@@ -1,0 +1,23 @@
+SHELL=/bin/sh
+
+CC=@CC@
+CPP=@CXX@
+CPPFLAGS=@CXXFLAGS@
+LDFLAGS=@LDFLAGS@ @WGDLIBS@ -L../../wgd_base -lcadence_wgd_base -lbluetooth
+INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include -I@top_srcdir@/modules/wgd_base/include -I@top_srcdir@/modules/wgd_input/include
+
+SOURCES=input.cpp joystick.cpp wiimote.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+LIB=libcadence_wgd_input.so
+
+all: $(SOURCES) $(LIB)
+
+$(LIB): $(OBJECTS)
+	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS)
+
+
+.cpp.o:
+	$(CPP) -fPIC -c $(CPPFLAGS) $(INCLUDES) $< -o $@
+
+clean:
+	rm *.o

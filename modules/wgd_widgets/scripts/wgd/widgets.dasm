@@ -1,0 +1,50 @@
+this widgets = (new
+	id = WGDWidgets
+	type = WidgetManager
+	x is { @root input mouse x }
+	y is { @root input mouse y }
+	left is { @root input mouse buttons left }
+	grabbed = false
+);
+
+@widgets = (this widgets);
+
+this widgets root = (new
+	type = Widget
+	id = WGDRootWidget
+	x = 0
+	y = 0
+	width is { @window width }
+	height is { @window height }
+	frame = 0
+	visible = true
+	border = 0
+	sprite = (new
+		type = Sprite
+		frames = 1
+		columns = 1
+		rows = 1
+		texture = (new
+			type = Texture
+			file = (new
+				type = LocalFile
+				filename = "data/wgd/emdesk.png"
+			)
+			compress = false
+		)
+	)
+
+	children = (new)
+	caption = ""
+);
+
+%include "wgd/themes/simple_dark.dasm";
+
+this modules wgd_widgets = (new type=Module
+	file = (new type=LocalFile
+		filename = "libcadence_wgd_widgets.so"
+	)
+	base = (this widgets)
+	update = true
+	frequency = 0.02
+);

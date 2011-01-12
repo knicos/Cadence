@@ -1,0 +1,66 @@
+@prototypes window = (new union (@prototypes widget)
+	id = Window
+	width = 240
+	height = 300
+	title = "title"
+	x = 5
+	y = 5
+	border = 8
+	frame = 3
+	
+	#Constructors
+	#create func { new union (@prototypes window) union (@prototypes dragable) }
+
+	%deep children = (new
+		%deep title = (new union (@prototypes widget)
+			width is { ... width }
+			height = 25
+			frame = 13
+			border = 8
+			caption is { ... title }
+			textcolour = (new r = 0.8 g = 0.8 b = 0.8 a = 1.0 )
+			textx = 10
+			texty = 2
+			mousedown is {.mouseover and (@widgets left)}
+			click is { .mousedown and (@widgets left not) }
+		)
+	)
+);
+
+#dragable window
+@prototypes dragable = (new
+	dragcontrol is { .children title }
+	grabbed = false
+	grabbed := { 
+		if(.dragcontrol mousedown and (@widgets grabbed not)) {true }
+		else if(@widgets left not) {false}
+		else { ..grabbed }
+	}
+
+	grabbed2 := { .grabbed }
+	grabx := { @widgets x - (.x) }
+	graby := { @widgets y - (.y) }
+	x := { if(.grabbed2) { @widgets x - (..grabx) } else { ..x } }
+	y := { if(.grabbed2) { @widgets y - (..graby) } else { ..y } }
+);
+
+#Scroll open ad closed when the title bar is clicked
+@prototypes scrollable = (new
+	openheight = 300.0
+
+	open = false
+	open is { if ( .children title click ) { .~open not } else { .~open } }
+	th is { if ( .open ) { .openheight } else 30.0 }
+	speed is { @widgets speed }
+	height = 30.0
+	height is { 
+		if ( .th < (.height)) { 
+			.~height - (.~speed) 
+		} else if ( .~th < (.~height + (.~speed)) not) {
+			.~height + (.~speed) 
+		} else { 
+			.~height
+		} 
+	}
+
+);

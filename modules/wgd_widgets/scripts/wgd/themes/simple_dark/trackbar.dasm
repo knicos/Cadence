@@ -1,0 +1,55 @@
+#trackbar slidey thing for selecting values
+#comes in two parts fro cloneability
+
+
+this prototypes trackbase = (new
+	type = Widget
+	sprite is { @root widgets sprite }
+	tint is {@root widgets tint}
+	border = 4 frame = 2
+	visible = true
+	width = 140
+	height = 8
+	x = 70
+	y = 34
+);
+
+
+this prototypes trackblob = (new
+	type = Widget
+	sprite is { @root widgets sprite }
+	tint is {@root widgets tint}
+	border = 8
+	frame is { if(this grabbed) 1 else 0 }
+	width = 12
+	height = 18
+	visible = true
+	
+	#min and max x coordinate blob can be - set these!
+	y = 30
+	min = 0	
+	max = 100
+	##################################################
+	
+	x is { this min add (this value mul (this range)) }
+	
+	range is { this max sub (this min) sub (this width) }
+	
+
+	#dragable
+	mousedown is {this mouseover and (@mouse buttons left)}
+	grabbed is {
+		if( this mousedown and (@root widgets grabbed not) ) true 
+		else { if(@mouse buttons left not ) false
+		else { this ! grabbed }}
+	}
+	grabbed2 is {this grabbed}
+	grabx is { this grabbed; @mouse ! x sub (this ! x) }
+	dragx is { if(this grabbed2) { @mouse x sub (this ! grabx) sub (this min) } else { this ! dragx } }
+	value is { 
+		if( this dragx less 0)  0.0
+		else { if(this dragx less (this range)) {
+			this dragx div (this range)
+		} else { 1.0 }}
+	}
+);

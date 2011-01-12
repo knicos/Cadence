@@ -1,0 +1,14 @@
+@prototypes widget = (new
+	type = Widget
+	id = Widget
+	visible = true
+	sprite is { @widgets sprite }
+	tint is { @widgets tint }
+	border is { @widgets sprite border }
+	x = 0
+	y = 0
+	frame = 0
+	font is { @widgets font }
+	textcolour = (new r=1.0 g=1.0 b=1.0 a=1.0)
+	%deep children = (new)
+); 

@@ -1,0 +1,24 @@
+@prototypes button = (new union (@prototypes widget)
+	id = Button
+	width = 60
+	height = 20
+	flat = false
+
+	oy is { if (.mousedown) {2} else {0} }
+
+	textx is { .width / 2 - (.textwidth / 2) + (.oy) }
+	texty is { .height / 2 - (.textheight / 2) + (.oy) }
+
+	mouseover = false
+	mousedown = false
+	frame is {
+		if (.mouseover) {
+			if (@widgets left) {2} else {1}
+		} else if (..flat) {15} else {0}
+	}
+
+	mousedown := { .mouseover and (@widgets left) }
+	click is { .mousedown and (@widgets left not) }
+
+	caption = "Button"
+);

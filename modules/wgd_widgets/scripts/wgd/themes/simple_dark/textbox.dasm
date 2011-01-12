@@ -1,0 +1,20 @@
+#editable textbox
+
+this prototypes textbox = (new
+	type = Widget
+	visible = true
+	sprite is { @root widgets sprite }
+	frame = 12
+	border = 8
+	width = 128
+	height = 20
+	x = 0
+	y = 0
+	
+	font is { @root widgets font }
+	textcolour = (new r = 0.0 g = 0.0 b = 0.0 a = 1.0 )
+	textx = 5
+	texty = 3
+	caption = "text"
+	
+);

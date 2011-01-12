@@ -1,0 +1,159 @@
+#colour picker
+
+.prototypes picker = (new union (@prototypes window) union (@prototypes dragable)
+	x = 0
+	y = 0
+	width = 240
+	height = 170
+	ontop = true
+
+	title = "Colour Picker"
+	
+	#output colour
+	%deep colour = (new r is {. .. r} g is {. .. g} b is {. .. b} a=1.0)
+	
+	#colour without luminosity
+	%deep colourhs = (new r is {. .. r2} g is {. .. g2} b is {. .. b2} a=1.0)
+	
+	
+	#HSL to RGB conversion
+	h is { .children colours hue }
+	s is { .children colours saturation }
+	l is { .children luminosity value }
+
+	
+	q is {
+		if(.l < 0.5) { 
+			.l * (.s + 1.0) 	#  l * (1+s);
+		} else {
+			.l + (.s) - (.l * (.s)) 	# l + s - (l*s)
+		}
+	}
+	p is { .l * 2 - (.q) } 	# 2*l - q
+	qp6 is { .q - (.p) * 6 }
+	
+	tr is { if(.h < 0.66667)    { .h + 0.33333 } else { .h + 0.33333 - 1.0 } } #	h + 1/3 wrap [0-1]
+	tg is { .h }
+	tb is { if(.h > 0.33333) { .h - 0.33333 } else { .h - 0.33333 + 1.0 } } # h - 1/3 wrap [0-1]
+	
+	
+	r is {
+		if(.tr < 0.16667) { .p + (.qp6 * (.tr)) }
+		else if(.tr < 0.5) { .q }
+		else if(.tr < 0.66667) { .p + (.qp6 * (0.66667 - (.tr))) }
+		else { .p }
+	}
+	
+	g is {
+		if(.tg < 0.16667) { .p + (.qp6 * (.tg)) }
+		else if(.tg < 0.5) { .q }
+		else if(.tg < 0.66667) { .p + (.qp6 * (0.66667 - (.tg))) }
+		else { .p }
+	}
+	
+	b is {
+		if(.tb < 0.16667) { .p + (.qp6 * (.tb)) }
+		else if(.tb < 0.5) { .q }
+		else if(.tb < 0.66667) { .p + (.qp6 * (0.66667 - (.tb))) }
+		else { .p }
+	}
+	
+	#Also need a version where l=0.5 for the colour of the luminosity widget
+	q2 is { 0.5 + (.s * 0.5) }
+	p2 is { 1.0 - (.q2) }
+	qp62 is { .q2 - (.p2) * 6 }
+	
+	r2 is {
+		if(.tr < 0.16667) { .p2 + (.qp62 * (.tr)) }
+		else if(.tr < 0.5) { .q2 }
+		else if(.tr < 0.66667) { .p2 + (.qp62 * (0.66667 - (.tr))) }
+		else { .p2 }
+	}
+	g2 is {
+		if(.tg < 0.16667) { .p2 + (.qp62 * (.tg)) }
+		else if(.tg < 0.5) { .q2 }
+		else if(.tg < 0.66667) { .p2 + (.qp62 * (0.66667 - (.tg))) }
+		else { .p2 }
+	}
+	b2 is {
+		if(.tb < 0.16667) { .p2 + (.qp62 * (.tb)) }
+		else if(.tb < 0.5) { .q2 }
+		else if(.tb < 0.66667) { .p2 + (.qp62 * (0.66667 - (.tb))) }
+		else { .p2 }
+	}
+	
+	children
+		%deep colours = (new
+			type = Widget
+			ontop = true
+			sprite = (new union (@prototypes sprite) filename = "./data/colours.tga")
+			
+			visible = true
+			width = 128
+			height = 128
+			x = 10
+			y = 30
+			
+			mx is {@widgets x - (.screenx)}
+			my is {@widgets y - (.screeny)}
+			pressed is { @widgets over == (.) and (@widgets left) and (@widgets grabbed not)  }
+			
+			hue is {
+				if(.pressed) {
+					if(.mx > (.width) or (.mx < 0)) { .~hue }
+					else { 0.0 + (.~mx) / (.width) }
+				} else { .~hue }
+			}
+			saturation is {
+				if(.pressed) {
+					if(.my > (.height) or (.my < 0)) { .~saturation }
+					else { 1.0 - (0.0 + (.~my) / (.height)) }
+				} else { .~saturation }
+			}
+		)
+
+		%deep luminosity1 = (new
+			type = Widget
+			sprite = (new union (@prototypes sprite) filename = "./data/white.png")
+			tint is {. .. .. colourhs}
+			visible = true
+			width = 16
+			height = 128
+			x = 140
+			y = 30
+			z = -1.0
+		)
+		
+		%deep luminosity = (new
+			type = Widget
+			sprite = (new union (@prototypes sprite) filename = "./data/luminosity.png")
+			visible = true
+			width = 16
+			height = 128
+			x = 140
+			y = 30
+			my is {@widgets y - (.screeny)}
+			pressed is { @widgets over == (.) and (@widgets left) and (@widgets grabbed not) }
+			value = 0.0
+			value is {
+				if(.pressed) {
+					if(.my > (.height) or (.my < 0)) { .~value }
+					else { 1.0 - (0.0 + (.~my) / (.height)) }
+				} else { .~value }
+			}
+		)
+		
+		%deep colour = (new
+			type = Widget
+			sprite is { . .. luminosity1 sprite }
+			tint is {. .. .. colour}
+			frame = 12
+			border = 8
+			visible = true
+			width = 50
+			height = 24
+			x = 165
+			y = 30
+		)
+	..
+);

@@ -1,0 +1,14 @@
+SHELL=/bin/sh
+MODULE_PATH=@prefix@/share/cadence/modules/
+MODULE_LIB=libcadence_wgd_widgets.so
+
+default::wgd_widgets
+
+wgd_widgets::
+	cd src; make
+
+install::
+	cd scripts; make install
+	cd data; make install
+	install -d "$(MODULE_PATH)"
+	install $(MODULE_LIB) "$(MODULE_PATH)"

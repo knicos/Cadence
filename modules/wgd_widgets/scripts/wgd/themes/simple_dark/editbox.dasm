@@ -1,0 +1,104 @@
+#Edit Box Requirements:
+# - Type and delete text to the end
+# - Move cursor to any position and insert characters.
+# - When finished, need to allow value only clone?
+# - Highlighting
+# - Flashing cursor
+# - If has focus then detect key presses.
+
+@prototypes editbox = (new union (@prototypes widget)
+	caption is { .text }
+	frame = 12
+	textx = 5
+	texty = 5
+	x = 0
+	y = 0
+	width = 200
+	height = 30
+	textcolour = (new r=0.0 b=0.0 g=0.0 a=1.0)
+
+	readonly = false
+	max = 40
+	onenter = void
+
+	#text = "Edit Box"
+
+	#_edit_agent is {
+	#	if (@widgets over == (.) and (@keyboard pressed)) {
+	#		select (@keyboard ~key) {
+	#			bkspace: {	.~text size = (.~text size - 1); }
+	#			return: { .onenter = void; }
+	#			$: {
+	#				.~text SET (.~text size) (@keyboard ~ascii);
+	#				.~text size = (.~text size + 1);
+	#			}
+	#		}
+	#	}
+	#}
+
+
+	#text is { if (@widgets over == (.)) { @keyboard key } else { .text } }
+
+	%deep text = (@ebox = (new)
+
+		size = 0
+		size := {
+			if (@widgets over == (..) and (@keyboard pressed)) {
+				if (@keyboard key == bkspace) {
+					..size - 1
+				} else {
+					..size + 1
+				}
+			} else {
+				..size
+			}
+		}
+
+		def = { if (.size == ($ + 1)) { @keyboard ascii } else { ..($) } }
+
+		#0 = ' '
+		$ := { if (.size == ($ + 1)) { @keyboard ascii } else { ..($) } }
+		#0 := (@ebox def)
+		#1 := (@ebox def)
+		#2 := (@ebox def)
+		#3 := (@ebox def)
+		#4 := (@ebox def)
+		#5 := (@ebox def)
+		#6 := (@ebox def)
+		#7 := (@ebox def)
+		#8 := (@ebox def)
+		#9 := (@ebox def)
+		#10 := (@ebox def)
+		#11 := (@ebox def)
+		#12 := (@ebox def)
+		#13 := (@ebox def)
+		#14 := (@ebox def)
+		#15 := (@ebox def)
+		#16 := (@ebox def)
+		#17 := (@ebox def)
+		#18 := (@ebox def)
+		#19 := (@ebox def)
+		#20 := (@ebox def)
+		#21 := (@ebox def)
+		#22 := (@ebox def)
+		#23 := (@ebox def)
+		#24 := (@ebox def)
+		#25 := (@ebox def)
+		#26 := (@ebox def)
+		#27 := (@ebox def)
+		#28 := (@ebox def)
+		#29 := (@ebox def)
+		#30 := (@ebox def)
+		#31 := (@ebox def)
+		#32 := (@ebox def)
+		#33 := (@ebox def)
+		#34 := (@ebox def)
+		#35 := (@ebox def)
+		#36 := (@ebox def)
+		#37 := (@ebox def)
+		#38 := (@ebox def)
+		#39 := (@ebox def)
+	)
+); 
+
+

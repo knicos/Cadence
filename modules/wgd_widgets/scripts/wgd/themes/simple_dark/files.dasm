@@ -1,0 +1,258 @@
+#file open/save dialog
+#needs current path
+#list of files
+#filename textbox
+#open/save button
+#parent directory button
+
+@prototypes files = (new union (@prototypes window) union (@prototypes dragable)
+	x = 50
+	y = 50
+	width = 240
+	height = 300
+	visible is { if( .children button click and (.~file == null not)) false else { .~visible} }
+	ontop = true
+	
+	#colours
+	foldercolour = (new r=0.0 g=0.0 b=0.8 a=1.0)
+	filecolour = (new r=0.0 g=0.0 b=0.0 a=1.0)
+	
+	#file selection
+	sel is {  if(@widgets over fileobject and (@widgets over click)) { @widgets over index}  	}	
+	sel2 is { .sel }
+
+	selfile is { 
+		if(.sel == null not) {
+			if( .directory (.sel) name == null) { .sel } 
+		}
+	}
+	seldir is { if(.sel2 == null not and (.selfile == null)) { .sel2 } }
+	
+	directory = (@root workdir)
+	
+	directory is {
+		if(.seldir == null not) {	
+			.~directory (.seldir) 
+		} else {
+			.~directory
+		}
+	}
+	
+	file is {
+		if(.selfile == null) { .~file }
+		else { .directory (.selfile) }
+	}
+	
+	#list creation
+	size is {.directory ~size }
+	
+	count = 0
+	count is {
+		if(.size > (.count) and ( .children files children spacer children (.count) parent == null not)) { 
+			.~count + 1 
+		} else {
+			.~count
+		}
+	}
+	
+	
+	children
+		%deep directory = (new union (@prototypes label)
+			width = 210
+			height = 24
+			x = 10
+			y = 30
+
+			textcolour = (new r = 0.0 g = 0.0 b = 0.0 a = 1.0 )
+			textx = 5
+			texty = 3
+			caption is { . .. .. directory name}
+		)
+		
+		files = (new
+			type = Widget
+			visible = true
+			sprite is { @root widgets sprite }
+			frame = 12
+			border = 8
+			width = 210
+			height is {@files height sub (this y) sub 30 }
+			x = 10
+			y = 56
+			
+			children = (new
+				spacer = (new
+					type = Widget
+					visible = true
+					x = 4
+					y = 4
+					width = 187
+					height is {@files children files height sub 8}
+					index = 7
+					
+					#crazyness
+					children = (@filelist = (new)
+						0 = (new
+							type = Widget
+							visible = true
+							width = 200
+							height = 0
+							x = 0
+							y is {@files children files children scroll value mul -1 }
+						)
+					)
+					
+					children is {
+						if (@files count ! greater 0) {
+							this ! children SET (@files ! count) (new
+								type = Widget
+								width = 200
+								x = 0
+								top = (this ! children 0)
+								y is {this top y add (this height mul (this index))}
+								height = 16
+								visible is { this index less (@files size) }
+								index = (@files ! count sub 1)
+								fileobject = true
+								caption is {
+									if(@files directory (this index) filename == null) {
+										@files directory ! (this index) name
+									} else { @files directory (this index) filename }
+								}
+								font is { @root widgets font }
+								
+								textcolour is {
+									if(@files directory (this index) filename == null) {
+										@files foldercolour
+									} else { @files filecolour }
+								}
+								
+								sprite is { if(@root widgets over == (this)) {@root widgets sprite} }
+								tint = (new r = 0.0 g=1.0 b=1.0 a=0.5)
+								frame = 14
+								
+								mousedown is {this mouseover and (@mouse buttons left)}
+								click is { this mousedown and (@mouse buttons left not) }
+							)
+						} else { this ! children }
+					}
+				)
+				
+				scroll = (new
+					type = Widget
+					x = 191
+					y = 3
+					width = 16
+					height is {@files children files height sub 6}
+					visible = true
+					sprite = {@root widgets sprite}
+					frame = 13
+					
+					max1 is { @files size mul 16 sub ( @files children files height sub 6) }
+					max is { if(this max1 greater 0) { this ! max1} else 1 }
+					
+					buttonchange is {
+						if( this children up mousedown and (this value greater 0) ) -1.0
+						else {
+							if( this children down mousedown and (this value less (this max)) ) 1.0 else 0.0
+						}					
+					}
+					
+					
+					value = 0.0
+					value is { this value;
+						if(this value less 0.0) 0.0
+						else {
+							if(this value greater (this max)) { this max }
+							else { this ! value add (this buttonchange mul 100 mul (@root ! itime) ) }
+						}
+					}
+					
+					children = (new
+						up = (new
+							visible = true
+							x = 0 y = 0 width = 16 height = 16
+							sprite is {@root widgets sprite}
+							frame is { if(this mousedown) 7 else 6  }
+							mousedown is {this mouseover and (@mouse buttons left)}
+							click is { this mousedown and (@mouse buttons left not) }
+						)
+						down = (new
+							visible = true
+							x = 0 y is {@files children files height sub 22}
+							width = 16 height = 16
+							sprite is {@root widgets sprite}
+							frame is { if(this mousedown) 11 else 10 }
+							mousedown is {this mouseover and (@mouse buttons left)}
+							click is { this mousedown and (@mouse buttons left not) }
+						)
+						blob  = (new
+							visible = true
+							width = 16 height = 24
+							
+							range is { @files children files children scroll height sub 32 sub (this height)}
+							max is { @files children files children scroll max }
+							value is {@files children files children scroll value}
+							pos is {this value mul (this range) div (this max) }
+							
+							x = 0
+							y is { this pos add 16 }
+							
+							sprite is {@root widgets sprite}
+							frame is { if(this mousedown) 2 else 0 }
+							mousedown is {this mouseover and (@mouse buttons left)}
+							click is { this mousedown and (@mouse buttons left not) }
+							
+							
+							#dragable
+							grabbed is { 
+								if(this mousedown) true 
+								else {if(@mouse buttons left not) false
+								else { this ! grabbed }}
+							}
+							grabbed2 is {this grabbed}
+							graby is { this grabbed; @mouse ! y sub (this ! y) }
+							dragy is { if(this grabbed2) { @mouse y sub (this ! graby) sub 16 } else { this ! dragy } }
+							drag_set is { 
+								if( this dragy less 0) { @files children files children scroll value = 0}
+								else { if(this dragy less (this range)) {
+									@files children files children scroll value = (this dragy div (this range) mul (this max)) 
+								} else { @files children files children scroll value = (this max)}}
+							}
+							
+						)
+					)
+				)
+			)
+		)
+		
+		#This needs to be a textbox!
+		filename = (new
+			type = Widget
+			visible = true
+			sprite is { @root widgets sprite }
+			frame = 12
+			border = 8
+			width = 150
+			height = 24
+			x = 10
+			y is { @files height sub 30 }
+			
+			font is { @root widgets font }
+			textcolour = (new r = 0.0 g = 0.0 b = 0.0 a = 1.0 )
+			textx = 5
+			texty = 3
+			caption = "filename.ent"
+			caption is { @files file filename }
+		)
+	)
+);
+
+#load/save button
+@files children button = (@prototypes button _clone);
+@files children button 	caption = "Open"
+						x is {@files children filename width add 12}
+						y is {@files children filename y};
+
+
+

@@ -1,0 +1,6 @@
+this modules wgd_input = (new type=Module
+	file = (new type=LocalFile
+		filename = "libcadence_wgd_input.so"
+	)
+	base = (this input)
+);
