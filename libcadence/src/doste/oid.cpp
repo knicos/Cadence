@@ -117,6 +117,11 @@ OID::OID(const char *v) {
 			if (neg) num = -num;
 			*this = OID(num);
 		}
+	} else if (v[0] == '\'') {
+		m_a = 0;
+		m_b = 3;
+		m_c = 0;
+		m_d = v[1];
 	} else {
 		*this = names->lookup(v);
 	}

@@ -73,7 +73,7 @@ XNetConnection::XNetConnection(const OID &o) : Agent(o) {
 	m_handler = 0;
 	m_bufsize = 10000;
 	m_buffer = new char[10000];
-	std::cout << "NEW LOCAL CONNECTION\n";
+	//std::cout << "NEW LOCAL CONNECTION\n";
 	m_proto = new XNetProtocol(this);
 
 	registerEvents();
@@ -86,7 +86,7 @@ XNetConnection::XNetConnection(const OID &o, int sck) : Agent(o) {
 	m_handler = 0;
 	m_bufsize = 10000;
 	m_buffer = new char[10000];
-	std::cout << "NEW REMOTE CONNECTION\n";
+	//std::cout << "NEW REMOTE CONNECTION\n";
 	//#ifdef LINUX
 	//fcntl(m_socket, F_SETFL, O_NONBLOCK);
 	//#endif
@@ -387,7 +387,7 @@ bool XNetConnection::data() {
 			//Check that rc == length
 			if (rc == length) {
 				m_proto->data(m_buffer, length);
-				std::cout << m_buffer;
+				//std::cout << m_buffer;
 			} else {
 				Warning(0, "Connection problem");
 			}
