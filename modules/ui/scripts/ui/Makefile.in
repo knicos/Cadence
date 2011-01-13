@@ -1,8 +1,4 @@
-SHELL=/bin/sh
-SCRIPT_PATH=@prefix@/share/cadence/scripts/ui
-
+MODULE_NAME=ui
 SCRIPTS=ui.dasm
 
-install::
-	install -d "$(SCRIPT_PATH)"
-	install -m 644 $(SCRIPTS) "$(SCRIPT_PATH)"
+include ../../module-scripts-sub.mk

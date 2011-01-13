@@ -1,0 +1,13 @@
+MODULE_PATH=@prefix@/share/cadence/modules/
+
+default::
+	cd src; make
+
+install::
+	if [ -d scripts ]; then cd scripts; make install; fi
+	if [ -d data ]; then cd data; make install; fi
+	install -d "$(MODULE_PATH)"
+	install "libcadence_$(MODULE_NAME).so" "$(MODULE_PATH)"
+
+clean::
+	cd src; make clean

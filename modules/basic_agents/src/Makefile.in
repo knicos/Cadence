@@ -1,22 +1,4 @@
-SHELL=/bin/sh
-
-CC=@CC@
-CPP=@CXX@
-CPPFLAGS=@CXXFLAGS@
-LDFLAGS=@LDFLAGS@
-INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include
-
+MODULE_NAME=basic_agents
 SOURCES=basic_agents.cpp
-OBJECTS=$(SOURCES:.cpp=.o)
-LIB=libcadence_basic_agents.so
 
-all: $(SOURCES) $(LIB)
-
-$(LIB): $(OBJECTS)
-	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS)
-
-.cpp.o:
-	$(CPP) -fPIC -c $(CPPFLAGS) $(INCLUDES) $< -o $@
-
-clean:
-	rm *.o
+include ../../module-src.mk

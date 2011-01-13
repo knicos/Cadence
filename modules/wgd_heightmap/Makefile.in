@@ -1,13 +1,3 @@
-SHELL=/bin/sh
-MODULE_PATH=@prefix@/share/cadence/modules/
-MODULE_LIB=libcadence_wgd_heightmap.so
+MODULE_NAME=wgd_heightmap
 
-default::wgd_heightmap
-
-wgd_heightmap::
-	cd src; make
-
-install::
-	cd scripts; make install
-	install -d "$(MODULE_PATH)"
-	install $(MODULE_LIB) "$(MODULE_PATH)"
+include ../module.mk

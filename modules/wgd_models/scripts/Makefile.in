@@ -1,6 +1,3 @@
-SHELL=/bin/sh
-SCRIPT_PATH=@prefix@/share/cadence/scripts
+MODULE_NAME=wgd
 
-install::
-	install -d "$(SCRIPT_PATH)"
-	cd wgd; make install
+include ../../module-scripts.mk

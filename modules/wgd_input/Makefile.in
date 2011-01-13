@@ -1,13 +1,3 @@
-SHELL=/bin/sh
-MODULE_PATH=@prefix@/share/cadence/modules/
-MODULE_LIB=libcadence_wgd_input.so
+MODULE_NAME=wgd_input
 
-default::wgd_input
-
-wgd_input::
-	cd src; make
-
-install::
-	cd scripts; make install
-	install -d "$(MODULE_PATH)"
-	install $(MODULE_LIB) "$(MODULE_PATH)"
+include ../module.mk

@@ -1,0 +1,6 @@
+SHELL=/bin/sh
+DATA_PATH=@prefix@/share/cadence/data/$(MODULE_NAME)
+
+install::
+	install -d "$(DATA_PATH)"
+	install -m 644 $(DATA) "$(DATA_PATH)"

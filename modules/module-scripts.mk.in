@@ -1,0 +1,6 @@
+SHELL=/bin/sh
+SCRIPT_PATH=@prefix@/share/cadence/scripts
+
+install::
+	install -d "$(SCRIPT_PATH)"
+	cd $(MODULE_NAME); make install

@@ -1,7 +1,3 @@
-SHELL=/bin/sh
-DATA_PATH=@prefix@/share/cadence/data
+MODULE_NAME=ui
 
-install::
-	install -d "$(DATA_PATH)"
-	cd ui; make install
-
+include ../../module-data.mk

@@ -1,13 +1,3 @@
-SHELL=/bin/sh
-MODULE_PATH=@prefix@/share/cadence/modules/
-MODULE_LIB=libcadence_wgd_models.so
+MODULE_NAME=wgd_models
 
-default::wgd_models
-
-wgd_models::
-	cd src; make
-
-install::
-	cd scripts; make install
-	install -d "$(MODULE_PATH)"
-	install $(MODULE_LIB) "$(MODULE_PATH)"
+include ../module.mk
