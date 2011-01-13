@@ -1,0 +1,21 @@
+#% A form of 2D widget that displays an image on the screen.
+@prototypes image = (new
+	type = Widget
+	visible = true					#% Select whether the widget should be drawn or not. @type=bool
+	filename = null					#% The file name for the image to draw. @type=string
+	%deep sprite = (new union (@prototypes sprite)	#% @internal. @prototype=sprite
+		filename is { .. filename }		#% @internal
+		frames = 1				#% @internal
+		columns = 1				#% @internal
+		rows = 1				#% @internal
+	)
+	%deep tint = (new r=1.0 g=1.0 b=1.0)		#% Colourise the image. @prototype=colour
+	border = 0					#% @internal. @type=integer
+	x = 0						#% X-Coordinate of top-left image pixel on the screen. @type=integer
+	y = 0						#% Y-Coordinate of top-left image pixel on the screen. @type=integer
+	frame = 0					#% @internal. @type=integer
+	font = null					#% @unused
+	textcolour = (new r=1.0 g=1.0 b=1.0 a=1.0)	#% @unused
+	#width is { .sprite texture width }
+	#height is { .sprite texture height }
+);

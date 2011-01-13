@@ -1,0 +1,8 @@
+@prototypes material = (new
+	%deep texture = (new union (@prototypes texture))
+	ambient = (new r=1.0 g=1.0 b=1.0 a=1.0)
+	diffuse = (new r=1.0 g=1.0 b=1.0 a=1.0)
+	specular = (new r=0.1 g=0.1 b=0.1 a=1.0)
+	shininess = 50
+	shader = null
+);

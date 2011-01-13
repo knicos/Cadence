@@ -1,3 +1,6 @@
+%include "wgd/sprite.dasm";
+%include "wgd/image.dasm";
+
 this modules wgd_base3d = (new type=Module
 	file = (new type=LocalFile
 		filename = "libcadence_wgd_base_3d.so"

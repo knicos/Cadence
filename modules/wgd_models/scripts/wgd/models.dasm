@@ -1,3 +1,5 @@
+%include "wgd/model.dasm";
+
 this modules wgd_models = (new type=Module
 	file = (new type=LocalFile
 		filename = "libcadence_wgd_models.so"

@@ -1,7 +1,7 @@
 SHELL=/bin/sh
 SCRIPT_PATH=@prefix@/share/cadence/scripts/wgd
 
-SCRIPTS=resources.dasm
+SCRIPTS=resources.dasm texture.dasm material.dasm
 
 install::
 	install -d "$(SCRIPT_PATH)"

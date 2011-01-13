@@ -1,0 +1,5 @@
+@prototypes model = (new
+	type = Model
+	%deep file = (new type=LocalFile filename is { .. filename })
+	%deep materials = (new)
+) 

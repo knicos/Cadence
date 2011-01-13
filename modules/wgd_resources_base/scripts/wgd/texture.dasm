@@ -1,0 +1,10 @@
+@prototypes texture = (new
+	type = Texture
+	%deep file = (new type=LocalFile filename is { .. filename })
+	filename = "test.png"
+	compress = true
+	nearest = false
+	mipmap = true
+	keep = false
+	clamp = false
+);

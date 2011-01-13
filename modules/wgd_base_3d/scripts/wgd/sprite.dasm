@@ -1,0 +1,17 @@
+@prototypes sprite = (new
+	type = Sprite
+
+	filename = "./white.png"
+	compress = false
+	mipmap = false
+	nearest = true
+
+	#Private
+	%deep texture = (new
+		type = Texture
+		%deep file = (new type = LocalFile filename is { ... filename } )
+		compress is {..compress}
+		mipmap is {.. mipmap}
+		nearest is {.. nearest}
+	)
+);

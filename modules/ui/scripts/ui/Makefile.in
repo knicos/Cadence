@@ -1,4 +1,4 @@
 MODULE_NAME=ui
 SCRIPTS=ui.dasm
 
-include ../../module-scripts-sub.mk
+include ../../../module-scripts-sub.mk

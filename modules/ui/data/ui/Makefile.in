@@ -1,4 +1,4 @@
 MODULE_NAME=ui
 DATA=node_0.png node_1.png node_2.png node_4.png edge_1.png edge_2.png edge_3.png edge_4.png edge_5.png edge_6.png edge_7.png edge_8.png node_0_b.png warning.png error.png accept.png close.png save.png console.png info.png help.png object.png script.png message.png
 
-include ../../module-data-sub.mk
+include ../../../module-data-sub.mk

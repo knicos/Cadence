@@ -1,7 +1,7 @@
 SHELL=/bin/sh
 SCRIPT_PATH=@prefix@/share/cadence/scripts/wgd
 
-SCRIPTS=models.dasm
+SCRIPTS=models.dasm model.dasm
 
 install::
 	install -d "$(SCRIPT_PATH)"

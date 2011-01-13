@@ -1,7 +1,7 @@
 SHELL=/bin/sh
 SCRIPT_PATH=@prefix@/share/cadence/scripts/wgd
 
-SCRIPTS=base3d.dasm
+SCRIPTS=base3d.dasm image.dasm sprite.dasm
 
 install::
 	install -d "$(SCRIPT_PATH)"
