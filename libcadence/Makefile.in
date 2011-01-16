@@ -1,6 +1,7 @@
 SHELL=/bin/sh
 SCRIPT_PATH=@prefix@/share/cadence/scripts
 LIB_PATH=@prefix@/lib
+INCLUDE_PATH=@prefix@/include
 
 default:: cadence
 
@@ -8,9 +9,10 @@ cadence::
 	cd src; make
 
 install:: cadence
-	install -d "$(LIB_PATH)" "$(SCRIPT_PATH)"
+	install -d "$(LIB_PATH)" "$(SCRIPT_PATH)" "$(INCLUDE_PATH)"
 	install -m 755 libcadence.so "$(LIB_PATH)"
 	cd ./scripts; make install
+	cd include; make install
 
 
 clean::

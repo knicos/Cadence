@@ -10,6 +10,7 @@
 #include "browser.h"
 #include "msghandler.h"
 #include "modules.h"
+#include "cqwidget.h"
 
 
 class MainWindow : public QMainWindow
@@ -33,6 +34,7 @@ class MainWindow : public QMainWindow
 	//ObjectTree *objtree;
 	Browser *browser;
 	QMenu *edit;
+	CWidgetManager *m_wm;
 
 	//AttributeWindow *attribs[MAX_ATTRIBUTES];
 	//InputWindow *inputs[MAX_INPUTS];

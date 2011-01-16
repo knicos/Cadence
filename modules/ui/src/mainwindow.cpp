@@ -100,6 +100,8 @@ MainWindow::MainWindow(QWidget *parent, Qt::WindowFlags flags)
 	//mtabs->addTab(msgwin, QIconSet(QPixmap("icons/message.png")), "Messages");
 	//mtabs->addTab(tracewin,QIconSet(QPixmap("icons/trace.png")), "Trace");
 	//mtabs->addTab(monitorwin,QIconSet(QPixmap("icons/monitor.png")),"Monitors");
+	
+	m_wm = new CWidgetManager((OID)(root["ui"]["modules"]), itabs);
 
 	MakeMenu();
 

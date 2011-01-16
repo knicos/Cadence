@@ -7,7 +7,7 @@ CPPFLAGS=@CXXFLAGS@ @QTINCLUDES@
 LDFLAGS=@LDFLAGS@ @QTLIBS@ -lQtGui -lQtCore
 INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include
 
-SOURCES=browser.cpp inputwindow.cpp mainwindow.cpp syntax.cpp ui.cpp msghandler.cpp modules.cpp history.cpp observableviewer.cpp
+SOURCES=browser.cpp inputwindow.cpp mainwindow.cpp syntax.cpp ui.cpp msghandler.cpp modules.cpp history.cpp observableviewer.cpp cqwidget.cpp
 HEADERS=browser.h inputwindow.h mainwindow.h msghandler.h modules.h history.h observableviewer.h
 MOCSOURCES=$(HEADERS:.h=_moc.cpp)
 OBJECTS=$(SOURCES:.cpp=.o) $(MOCSOURCES:.cpp=.o)
