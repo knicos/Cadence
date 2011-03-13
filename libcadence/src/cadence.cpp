@@ -337,14 +337,14 @@ void cadence::finalise() {
 }
 
 void cadence::update() {
-	//#ifdef LINUX
+	#ifdef LINUX
         ttime = ((double) getTicks() - (double) startticks) / 1000000.0;
-	//#endif
-	//#ifdef WIN32
-	//LARGE_INTEGER fq;
-	//QueryPerformanceFrequency(&fq);
-	//ttime = ((double)getTicks() - (double)startticks) / (double)(((unsigned long long)fq.HighPart << 32) + (unsigned long long)fq.LowPart);
-	//#endif
+	#endif
+	#ifdef WIN32
+	LARGE_INTEGER fq;
+	QueryPerformanceFrequency(&fq);
+	ttime = ((double)getTicks() - (double)startticks) / (double)(((unsigned long long)fq.HighPart << 32) + (unsigned long long)fq.LowPart);
+	#endif
 
 	if (settime) root["time"] = ttime;
 	//root["frametime"] = ttime - ttime_last;
