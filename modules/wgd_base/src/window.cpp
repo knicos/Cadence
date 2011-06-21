@@ -85,10 +85,10 @@ namespace wgd {
 		//XResizeWindow(m_display, m_window, width(), height());
 		//#endif
 
-		cadence::Object::destroyAll();
-		wgd::window = ((OID)WGD["window"]);
-		wgd::keyboard = ((OID)WGD["input"]["keyboard"]);
-		wgd::mouse = ((OID)WGD["input"]["mouse"]);
+		//cadence::Object::destroyAll();
+		//wgd::window = ((OID)WGD["window"]);
+		//wgd::keyboard = ((OID)WGD["input"]["keyboard"]);
+		//wgd::mouse = ((OID)WGD["input"]["mouse"]);
 	}
 
 	OnEvent(GameWindow, evt_title) {
