@@ -1,7 +1,7 @@
 SHELL=/bin/sh
-SCRIPT_PATH=@prefix@/share/cadence/scripts/agents
+SCRIPT_PATH=@prefix@/share/cadence/scripts/sound
 
-SCRIPTS=basic.dasm
+SCRIPTS=sound.dasm
 
 install::
 	install -d "$(SCRIPT_PATH)"

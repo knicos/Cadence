@@ -1,4 +1,6 @@
-MODULE_NAME=basic_agents
-SOURCES=basic_agents.cpp
+MODULE_NAME=sound-gen
+SOURCES=sound.cpp
 
-include ../../../Cadence/module-src.mk
+LDFLAGS=@LDFLAGS@ -lasound
+
+include ../../module-src.mk

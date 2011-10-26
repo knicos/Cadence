@@ -1,3 +1,3 @@
-MODULE_NAME=basic_agents
+MODULE_NAME=sound-gen
 
 include ../module.mk

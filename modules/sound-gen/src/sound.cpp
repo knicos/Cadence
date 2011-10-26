@@ -120,7 +120,7 @@ extern "C" void initialise(const cadence::doste::OID &base) {
    //}
 
 	int status;
-	if ((status = snd_rawmidi_open(&midiin, NULL, "hw:1,0,0", SND_RAWMIDI_NONBLOCK)) < 0) {
+	if ((status = snd_rawmidi_open(&midiin, NULL, "hw:2,0,0", SND_RAWMIDI_NONBLOCK)) < 0) {
       printf("Problem opening MIDI input: %s", snd_strerror(status));
       exit(1);
    }
