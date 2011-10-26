@@ -1,0 +1,8 @@
+SHELL=/bin/sh
+SCRIPT_PATH=@prefix@/share/cadence/scripts/agents
+
+SCRIPTS=basic.dasm
+
+install::
+	install -d "$(SCRIPT_PATH)"
+	install -m 644 $(SCRIPTS) "$(SCRIPT_PATH)"

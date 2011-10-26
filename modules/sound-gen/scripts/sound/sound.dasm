@@ -1,0 +1,51 @@
+.modules sound = (new type=Module
+	file = (new type=LocalFile
+		filename = "/home/wmb/Cadence/CadenceExpts/sound/src/libcadence_sound.so"
+	)
+	base = (new
+		keys = (new)
+		freq = 200
+		amp is {@math sin (@root time * (.freq)) * 0.2}
+	)
+	update = true
+	frequency = 0.0
+);
+.snd = (.modules sound base);
+
+.snd frequencies = (new
+	60 = 261.63
+	61 = 277.18
+	62 = 293.66
+	63 = 311.13
+	64 = 329.63
+	65 = 349.23
+	66 = 369.99
+	67 = 392.00
+	68 = 415.30
+	69 = 440.00
+	70 = 466.16
+	71 = 493.88
+);
+
+.snd freq = 440;
+.snd f is { .freq * 6.28 };
+#.snd fA is {.f};
+#.snd fB is {.f * 2 - 40};
+#.snd fC is {.f * 3 - 50};
+#.snd fD is {.f * 4 - 60};
+
+.snd fA is { if (.keys 60) { ..frequencies 60 } else { 0.0 } };
+.snd fB is { if (.keys 61) { ..frequencies 61 } else { 0.0 } };
+.snd fC is { if (.keys 62) { ..frequencies 62 } else { 0.0 } };
+.snd fD is { if (.keys 63) { ..frequencies 63 } else { 0.0 } };
+
+.snd volA = 0.5;
+.snd volB = 0.5;
+.snd volC = 0.5;
+.snd volD = 0.5;
+.snd ampA is { @math sin (@root time * (.fA) * (@math pi * 2)) * (.volA) };
+.snd ampB is { @math sin (@root time * (.fB) * (@math pi * 2)) * (.volB) };
+.snd ampC is { @math sin (@root time * (.fC) * (@math pi * 2)) * (.volC) };
+.snd ampD is { @math sin (@root time * (.fD) * (@math pi * 2)) * (.volD) };
+.snd amp is { .ampA + (.ampB) + (.ampC) + (.ampD) };
+

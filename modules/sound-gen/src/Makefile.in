@@ -1,0 +1,4 @@
+MODULE_NAME=basic_agents
+SOURCES=basic_agents.cpp
+
+include ../../../Cadence/module-src.mk

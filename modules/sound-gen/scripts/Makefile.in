@@ -1,0 +1,3 @@
+MODULE_NAME=agents
+
+include ../../module-scripts.mk
