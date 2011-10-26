@@ -1,6 +1,6 @@
 .modules sound = (new type=Module
 	file = (new type=LocalFile
-		filename = "/home/wmb/Cadence/CadenceExpts/sound/src/libcadence_sound.so"
+		filename = "libcadence_sound-gen.so"
 	)
 	base = (new
 		keys = (new)

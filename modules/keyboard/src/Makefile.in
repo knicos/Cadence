@@ -1,0 +1,6 @@
+MODULE_NAME=keyboard
+SOURCES=keyboard.cpp
+
+LDFLAGS=@LDFLAGS@ -lasound
+
+include ../../module-src.mk

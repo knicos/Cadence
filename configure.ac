@@ -299,21 +299,29 @@ CXXFLAGS="$CXXFLAGS -g -Wall -DLINUX "
 CFLAGS="-DLINUX -O3"
 LDFLAGS="$LDFLAGS -lpthread -ldl"
 
-if test -f /local/java/qt-x11-opensource/bin/moc ; then
-	QTMOC="/local/java/qt-x11-opensource/bin/moc"
-	QTLIBS="-L/local/java/qt-x11-opensource/lib"
-	QTINCLUDES="-I/local/java/qt-x11-opensource/include/Qt  -I/local/java/qt-x11-opensource/include/QtCore  -I/local/java/qt-x11-opensource/include/QtGui -I/local/java/qt-x11-opensource/include" 
-else
-	if test -f /usr/include/qt4/Qt/qlist.h; then
-		QTMOC="moc"
-		QTINCLUDES="-I/usr/include/qt4 -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui"
-		QTLIBS=""
-	else
-		QTMOC="moc"
-		QTINCLUDES="-I/usr/include/QtCore -I/usr/include/QtGui"
-		QTLIBS=""
-	fi
-fi
+#if test -f /local/java/qt-x11-opensource/bin/moc ; then
+#       QTMOC="/local/java/qt-x11-opensource/bin/moc"
+#       QTLIBS="-L/local/java/qt-x11-opensource/lib"
+#       QTINCLUDES="-I/local/java/qt-x11-opensource/include/Qt  -I/local/java/qt-x11-opensource/include/QtCore  -I/local/java/qt-x11-opensource/include/QtGui -I/local/java/qt-x11-opensource/include"
+#else
+        if test -f /usr/include/qt4/Qt/qlist.h; then
+                if test -f /usr/bin/moc-qt4; then
+                        QTMOC="moc-qt4"
+                else
+                        QTMOC="moc"
+                fi
+                QTINCLUDES="-I/usr/include/qt4 -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui"
+                QTLIBS=""
+        else
+                if test -f /usr/bin/moc-qt4; then
+                        QTMOC="moc-qt4"
+                else
+                        QTMOC="moc"
+                fi
+                QTINCLUDES="-I/usr/include/QtCore -I/usr/include/QtGui"
+                QTLIBS=""
+        fi
+#fi
 
 if test "$target_cpu" == "x86_64"; then
 	CXXFLAGS="$CXXFLAGS -DX86_64"
@@ -330,7 +338,7 @@ WGDLIBS="-lGL -lGLU -lX11 -lXxf86vm"
 ##############################################################################
 # Select which modules to build
 ##############################################################################
-MODULES="ui basic_agents sound-gen xnet wgd_base wgd_resources_base wgd_base_2d wgd_base_3d wgd_heightmap wgd_input wgd_models wgd_widgets"
+MODULES="ui basic_agents sound-gen keyboard xnet wgd_base wgd_resources_base wgd_base_2d wgd_base_3d wgd_heightmap wgd_input wgd_models wgd_widgets"
 
 
 AC_ARG_ENABLE(debug,
@@ -350,6 +358,6 @@ AC_SUBST(WGDLIBS)
 AC_SUBST(QTINCLUDES)
 AC_SUBST(MODULES)
 
-AC_OUTPUT(Makefile libcadence/Makefile libcadence/src/Makefile libcadence/src/doste/Makefile libcadence/src/library/Makefile libcadence/scripts/Makefile loader/Makefile loader/cadence modules/Makefile modules/module.mk modules/module-src.mk modules/module-scripts.mk modules/module-data.mk modules/module-scripts-sub.mk modules/module-data-sub.mk modules/ui/Makefile modules/ui/src/Makefile modules/ui/data/Makefile modules/ui/data/ui/Makefile modules/ui/scripts/Makefile modules/ui/scripts/ui/Makefile modules/xnet/Makefile modules/xnet/src/Makefile modules/xnet/scripts/Makefile modules/xnet/scripts/xnet/Makefile modules/basic_agents/Makefile modules/basic_agents/src/Makefile modules/basic_agents/scripts/Makefile modules/basic_agents/scripts/agents/Makefile modules/wgd_base/Makefile modules/wgd_base/src/Makefile modules/wgd_base/scripts/Makefile modules/wgd_base/scripts/wgd/Makefile modules/wgd_base_2d/Makefile modules/wgd_base_2d/src/Makefile modules/wgd_base_2d/scripts/Makefile modules/wgd_base_2d/scripts/wgd/Makefile  modules/wgd_base_3d/Makefile modules/wgd_base_3d/src/Makefile modules/wgd_base_3d/scripts/Makefile modules/wgd_base_3d/scripts/wgd/Makefile modules/wgd_heightmap/Makefile modules/wgd_heightmap/src/Makefile modules/wgd_heightmap/scripts/Makefile modules/wgd_heightmap/scripts/wgd/Makefile modules/wgd_input/Makefile modules/wgd_input/src/Makefile modules/wgd_input/scripts/Makefile modules/wgd_input/scripts/wgd/Makefile modules/wgd_models/Makefile modules/wgd_models/src/Makefile modules/wgd_models/scripts/Makefile modules/wgd_models/scripts/wgd/Makefile modules/wgd_resources_base/Makefile modules/wgd_resources_base/src/Makefile modules/wgd_resources_base/scripts/Makefile modules/wgd_resources_base/scripts/wgd/Makefile modules/wgd_widgets/Makefile modules/wgd_widgets/src/Makefile modules/wgd_widgets/scripts/Makefile modules/wgd_widgets/scripts/wgd/Makefile modules/wgd_widgets/scripts/wgd/themes/Makefile modules/wgd_widgets/scripts/wgd/themes/simple_dark/Makefile modules/wgd_widgets/data/Makefile modules/wgd_widgets/data/wgd/Makefile modules/sound-gen/Makefile modules/sound-gen/src/Makefile modules/sound-gen/scripts/Makefile modules/sound-gen/scripts/sound/Makefile )
+AC_OUTPUT(Makefile libcadence/Makefile libcadence/src/Makefile libcadence/src/doste/Makefile libcadence/src/library/Makefile libcadence/scripts/Makefile loader/Makefile loader/cadence modules/Makefile modules/module.mk modules/module-src.mk modules/module-scripts.mk modules/module-data.mk modules/module-scripts-sub.mk modules/module-data-sub.mk modules/ui/Makefile modules/ui/src/Makefile modules/ui/data/Makefile modules/ui/data/ui/Makefile modules/ui/scripts/Makefile modules/ui/scripts/ui/Makefile modules/xnet/Makefile modules/xnet/src/Makefile modules/xnet/scripts/Makefile modules/xnet/scripts/xnet/Makefile modules/basic_agents/Makefile modules/basic_agents/src/Makefile modules/basic_agents/scripts/Makefile modules/basic_agents/scripts/agents/Makefile modules/wgd_base/Makefile modules/wgd_base/src/Makefile modules/wgd_base/scripts/Makefile modules/wgd_base/scripts/wgd/Makefile modules/wgd_base_2d/Makefile modules/wgd_base_2d/src/Makefile modules/wgd_base_2d/scripts/Makefile modules/wgd_base_2d/scripts/wgd/Makefile  modules/wgd_base_3d/Makefile modules/wgd_base_3d/src/Makefile modules/wgd_base_3d/scripts/Makefile modules/wgd_base_3d/scripts/wgd/Makefile modules/wgd_heightmap/Makefile modules/wgd_heightmap/src/Makefile modules/wgd_heightmap/scripts/Makefile modules/wgd_heightmap/scripts/wgd/Makefile modules/wgd_input/Makefile modules/wgd_input/src/Makefile modules/wgd_input/scripts/Makefile modules/wgd_input/scripts/wgd/Makefile modules/wgd_models/Makefile modules/wgd_models/src/Makefile modules/wgd_models/scripts/Makefile modules/wgd_models/scripts/wgd/Makefile modules/wgd_resources_base/Makefile modules/wgd_resources_base/src/Makefile modules/wgd_resources_base/scripts/Makefile modules/wgd_resources_base/scripts/wgd/Makefile modules/wgd_widgets/Makefile modules/wgd_widgets/src/Makefile modules/wgd_widgets/scripts/Makefile modules/wgd_widgets/scripts/wgd/Makefile modules/wgd_widgets/scripts/wgd/themes/Makefile modules/wgd_widgets/scripts/wgd/themes/simple_dark/Makefile modules/wgd_widgets/data/Makefile modules/wgd_widgets/data/wgd/Makefile modules/sound-gen/Makefile modules/sound-gen/src/Makefile modules/sound-gen/scripts/Makefile modules/sound-gen/scripts/sound/Makefile modules/keyboard/Makefile modules/keyboard/src/Makefile modules/keyboard/scripts/Makefile modules/keyboard/scripts/keyboard/Makefile )
 
 ####################

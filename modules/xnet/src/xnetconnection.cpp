@@ -363,6 +363,11 @@ void XNetConnection::update() {
 				}
 			}
 		}
+		
+		if (count > 100) {
+		    std::cout << "XNET: Stuck in loop?\n";
+		    break;
+		}
 	}
 	
 	return;

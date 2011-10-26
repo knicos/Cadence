@@ -1,0 +1,11 @@
+.modules keyboard = (new type=Module
+	file = (new type=LocalFile
+		filename = "libcadence_keyboard.so"
+	)
+	base = (new
+		keys = (new)
+	)
+	update = true
+	frequency = 0.0
+);
+.keyboard = (.modules keyboard base);
