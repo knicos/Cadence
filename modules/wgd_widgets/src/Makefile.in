@@ -3,7 +3,7 @@ SHELL=/bin/sh
 CC=@CC@
 CPP=@CXX@
 CPPFLAGS=@CXXFLAGS@
-LDFLAGS=@LDFLAGS@ @WGDLIBS@ -L../../wgd_base -L../../wgd_resources_base -lcadence_wgd_base -lcadence_wgd_resources_base
+LDFLAGS=@LDFLAGS@ 
 INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include -I@top_srcdir@/modules/wgd_base/include -I@top_srcdir@/modules/wgd_resources_base/include -I@top_srcdir@/modules/wgd_widgets/include
 
 SOURCES=widgets.cpp wviewport.cpp
@@ -13,7 +13,7 @@ LIB=libcadence_wgd_widgets.so
 all: $(SOURCES) $(LIB)
 
 $(LIB): $(OBJECTS)
-	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS)
+	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS) @WGDLIBS@ -L../../wgd_base -L../../wgd_resources_base -lcadence_wgd_base -lcadence_wgd_resources_base
 
 
 .cpp.o:

@@ -57,6 +57,12 @@ namespace cadence {
 			* @param o The object representing the definition.
 			*/
 			Definition(const cadence::doste::OID &o) : m_def(o) { m_size = (OID)m_def[Size]; };
+			
+			/**
+			 * Constructor for compiled definitions.
+			 */
+			Definition(const cadence::doste::OID &o, void *c) : m_def(o), m_comp(c) { };
+			
 			/** Destructor. */
 			~Definition() {};
 	
@@ -96,6 +102,7 @@ namespace cadence {
 			private:
 			cadence::doste::OID m_def;
 			int m_size;
+			void *m_comp;
 			
 			void buildif(char *buf, OID ifobj, int indent) const;
 			void toString(char *buf, int max, int indent) const;

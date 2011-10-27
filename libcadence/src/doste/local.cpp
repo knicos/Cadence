@@ -605,6 +605,7 @@ void VStore::Attribute::setDefinition(const OID &def, int flags, const OID &init
 
 
 	m_def = def;
+	//Maybe compile definition here.
 	
 	m_flags = flags;
 	

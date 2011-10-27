@@ -4,7 +4,7 @@ CC=@CC@
 MOC=@QTMOC@
 CPP=@CXX@
 CPPFLAGS=@CXXFLAGS@ @QTINCLUDES@
-LDFLAGS=@LDFLAGS@ @QTLIBS@ -lQtGui -lQtCore
+LDFLAGS=@LDFLAGS@ @QTLIBS@
 INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include
 
 SOURCES=browser.cpp inputwindow.cpp mainwindow.cpp syntax.cpp ui.cpp msghandler.cpp modules.cpp history.cpp observableviewer.cpp
@@ -16,7 +16,7 @@ LIB=libcadence_ui.so
 all: $(SOURCES) $(LIB)
 
 $(LIB): $(OBJECTS)
-	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS)
+	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS)  -lQtGui -lQtCore
 
 %_moc.cpp:
 	$(MOC) -o $@ $*.h

@@ -155,6 +155,18 @@ bool TexturePNG::load() {
 	break;
 	}
 	
+	if (mwidth == 0) {
+		std::cout << "INVALID PNG\n";
+		f->close();
+		std::cout << "PNG GLubyte: " << (sizeof (GLubyte)) << "\n";
+	std::cout << "PNG width: " << mwidth << "\n";
+	std::cout << "PNG height: " << mheight << "\n";
+	std::cout << "PNG format: " << iFormat << "\n";
+		return false;	
+	}
+	
+	
+	
 	/* we can now allocate memory for storing pixel data */
 	mdata = (char*)malloc (sizeof (GLubyte) * mwidth
 		* mheight * iFormat);

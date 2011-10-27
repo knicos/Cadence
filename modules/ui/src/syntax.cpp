@@ -66,6 +66,9 @@ void Syntax::highlightBlock ( const QString & text )
 		if (beg != pos) setFormat(beg,pos-beg, font_normal);
 
 		if (pos == text.length()) return;
+		if (text2[pos] == 0) return;
+		
+		//std::cout << pos << ":" << text.length() << " = " << (int)text2[pos] << "\n";
 	
 		switch (text2[pos])
 		{

@@ -3,7 +3,7 @@ SHELL=/bin/sh
 CC=@CC@
 CPP=@CXX@
 CPPFLAGS=@CXXFLAGS@ -I/usr/include/QtCore -I/usr/include/QtGui
-LDFLAGS=@LDFLAGS@ @WGDLIBS@
+LDFLAGS=@LDFLAGS@
 INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include -I@top_srcdir@/modules/wgd_base/include
 
 SOURCES=base.cpp extensions.cpp index.cpp input.cpp matrix.cpp mouse.cpp window.cpp
@@ -13,7 +13,7 @@ LIB=libcadence_wgd_base.so
 all: $(SOURCES) $(LIB)
 
 $(LIB): $(OBJECTS)
-	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS)
+	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS) @WGDLIBS@
 
 
 .cpp.o:

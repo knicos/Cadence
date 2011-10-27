@@ -15,7 +15,7 @@ EXECUTABLE=cadence.bin
 all: $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CPP) $(LDFLAGS) -L../libcadence/ -o ./$@ $(OBJECTS) -lcadence
+	$(CPP) $(LDFLAGS) -L../libcadence/ -o ./$@ $(OBJECTS) -lcadence -ldl -lpthread
 
 .cpp.o:
 	$(CPP) -c $(CPPFLAGS) $(INCLUDES) $< -o $@

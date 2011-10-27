@@ -174,6 +174,7 @@ namespace cadence {
 
 				List<Dependency> m_deps;
 				OID m_def;
+				void *m_compdef;
 				unsigned char m_flags;
 				Attribute *next;
 				//SpinLock m_lock;
