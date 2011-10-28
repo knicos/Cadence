@@ -1,0 +1,38 @@
+.modules shapes = (new type=Module
+	file = (new type=LocalFile
+		filename = "libcadence_shapes.so"
+	)
+	base = (new
+	)
+	update = true
+	frequency = 0.0
+);
+@shapes = (.modules shapes base);
+
+@prototypes sPoint = (new
+	x = 0
+	y = 0
+);
+
+@prototypes colour = (new
+	r = 0
+	g = 0
+	b = 0
+);
+
+@prototypes sLine = (new
+	type = Shape_Line
+	%deep colour = (new union (@prototypes colour))
+	%deep p1 = (new union (@prototypes sPoint))
+	%deep p2 = (new union (@prototypes sPoint))
+);
+
+@prototypes sWindow = (new
+	type = Shape_Window
+	title = "No Title"
+	x = 100
+	y = 100
+	width = 800
+	height = 600
+	visible = true
+)

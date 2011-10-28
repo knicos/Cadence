@@ -1,0 +1,6 @@
+MODULE_NAME=shapes
+SOURCES=shapes.cpp swindow.cpp
+
+LDFLAGS=@LDFLAGS@
+
+include ../../module-src.mk
