@@ -1,0 +1,7 @@
+
+this modules hyperfun = (new type=Module
+	file = (new type=LocalFile
+		filename = "libcadence_hyperfun.so"
+	)
+	base = (this)
+);

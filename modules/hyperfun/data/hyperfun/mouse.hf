@@ -1,0 +1,225 @@
+ -- Shape Modeling II course
+-- F-rep modeling and visualization with HyperFun
+-- Dec 1999
+-- Author: Kasumi Abe, University of Aizu, master student 
+
+my_model(x[3], a[1])
+{
+  array p[3],center[3],center1[3];
+
+  xx = x[1];
+  y = x[2];
+  z = x[3];
+
+-- cap
+
+  -- brim (futi)
+  center = [0.0,0.0,0.0];
+  p[1] = xx;
+  p[2] = y;
+  p[3] = z;
+
+  tmp = hfScale3D(p,0.9,1,1.05);
+  tmp = hfRotate3DX(p,-0.9);
+  tmp = hfShift3D(p,0.0,3.3,3.5);
+  brim = hfTorusY(p,center,2.9,0.5);
+
+  -- steeple (tongari)
+  p[1] = xx;
+  p[2] = y;
+  p[3] = z;
+  tmp = hfRotate3DX(p,-0.9);
+  tmp = hfShift3D(p,0.0,2.8,3.5);
+  cap1 = hfEllipsoid(p,center,3.1,4.0,3.35) \ (~(p[2]-0.5));
+  
+  center = [0.0,5.0,-3.3];
+  cap2 = hfEllipsoid(x,center,1.4,3.2,0.6) \ (y - 5.5);
+  cap3 = hfBlendUni(cap1,cap2,0.1,0.1,0.1);
+
+  -- tassel
+  center = [0.0,2.2,-3.9];
+  tassel = hfSphere(x,center,0.8);
+
+  cap = cap3 | brim | tassel;
+  
+-- ears
+  p[1] = xx;
+  p[2] = y;
+  p[3] = z;
+ 
+  tmp = hfRotate3DX(p,-0.3);
+  tmp = hfShift3D(p,0.0,1.7,0.27);
+  center = [2.5,5.6,1.0];
+  ear1 = hfEllipsoid(p,center,1.5,1.5,0.9);
+  center = [2.8,5.6,1.3];
+  ear2 = hfEllipsoid(p,center,1.9,1.9,0.8);
+
+  center = [-2.5,5.6,1.0];
+  ear3 = hfEllipsoid(p,center,1.5,1.5,0.9);
+  center = [-2.8,5.6,1.3];
+  ear4 = hfEllipsoid(p,center,1.9,1.9,0.8);
+  
+  ear = (ear1 \ ear2) | (ear3 \ ear4);
+
+
+-- hear
+  center = [0.0,4.0,0.0];
+  head1 = hfEllipsoid(x,center,2.7,3.0,2.8);
+
+  center = [0.0,5.0,0.9];
+  head2 = hfEllipsoid(x,center,2.0,2.0,2.1);
+  head3 = (4.0 - y);
+  head4 = (z - 2.5);
+  hear = head1 \ head2 \ (head3 & head4) \ (2.3-y);
+  
+-- face
+  center = [0.0,4.0,0.5];
+  face1 = hfEllipsoid(x,center,2.3,2.9,2.4);
+  face = face1 \ (head3 & head4) \ (2.3 -y);
+
+-- eyes
+  center = [0.0,4.0,0.6];
+  eye1 = hfEllipsoid(x,center,2.3,2.9,2.4);
+
+  center = [0.5,5.5,0];
+  eye2 = hfEllCylZ(x,center,0.4,0.7);
+  eye3 = eye1 & eye2;
+  
+  center = [-0.5,5.5,0];
+  eye4 = hfEllCylZ(x,center,0.4,0.7);
+  eye5 = eye1 & eye4; 
+
+  -- iris
+  center = [0.5,5.2,2.65];
+  eye6 = hfSphere(x,center,0.28);
+  eye7 = eye3 & (-eye6);
+  
+  center = [-0.5,5.2,2.65];
+  eye8 = hfSphere(x,center,0.28);
+  eye9 = eye5 & (-eye8);
+
+-- cheek and mouth
+  p[1] = xx;
+  p[2] = y;
+  p[3] = z;
+
+  tmp = hfScale3D(p,1,0.7,2.0);
+  center = [1.55,5.7,0.6];
+  cheek1 = hfTorusZ(p,center,0.5,0.5) \ (5.6-p[2]);
+  center = [-1.55,5.7,0.6];
+  cheek2 = hfTorusZ(p,center,0.5,0.5) \ (5.6-p[2]);
+  cheek3 = cheek1 | cheek2;
+
+  p[1] = xx;
+  p[2] = y;
+  p[3] = z;
+  tmp = hfScale3D(p,1,0.7,2.1);
+
+  center = [0.0,5.6,0.7];
+  cheek4 = hfTorusZ(p,center,2.0,0.5) \ (y - 4.4);
+
+  -- cheek = hfBlendUni(cheek3,cheek4,0.2,1.0,1.0); 
+
+  -- mouth
+  center = [0.0,2.0,3.3];
+  p[1] = xx;
+  p[2] = y;
+  p[3] = z;
+  tmp = hfRotate3DX(p,-0.3);
+  mouth1 = hfSphere(p,center,0.7) \ (p[3]-3.4);
+  mouth2 = hfSphere(p,center,0.5);
+  
+  mouth3 = (mouth1 \ mouth2) | cheek4;
+  mouth = hfBlendUni(cheek3,mouth3,0.3,0.8,0.8);
+
+-- nose
+  center = [0.0,2.7,0.0];
+  p[1] = xx;
+  p[2] = y;
+  p[3] = z;
+  tmp = hfRotate3DX(p,-0.4);
+  nose1 = hfEllipsoid(p,center,1.97,1.5,5.5) \ (1.0-p[3]);
+  
+  center = [0.0,5.0,3.9];
+  nose2 = hfEllipsoid(x,center,0.5,0.7,0.5);
+  
+  nose = nose1 | nose2;
+
+  -- neck
+  center =[0.0,1.9,0.0];
+  neck = hfTorusY(x,center,1.0,0.8);
+
+  head = hear | face | eye7 | eye9 | neck | mouth | nose;
+
+  -- breast
+  center =[0.0,0.1,-1.7];
+  body1 = hfEllipsoid(x,center,2.0,1.6,3.4) \ (-1.7-z);
+
+  -- arm
+  center =[0.0,-1.8,-1.6];
+  p[1] = xx;
+  p[2] = y;
+  p[3] = z;
+  tmp = hfScale3D(p,1,2,1);
+  tmp = hfRotate3DY(p,0.9);
+  arm1 = hfTorusX(p,center,2.0,0.7) \ (-2.0-p[2]) \ (p[3]+1.6);
+
+  p[1] = xx;
+  p[2] = y;
+  p[3] = z;
+  tmp = hfScale3D(p,1,2,1);
+  tmp = hfRotate3DY(p,-0.9);
+  arm2 = hfTorusX(p,center,2.0,0.7) \ (-2.0-p[2]) \ (p[3]+1.6);
+
+  -- cuffs
+  center = [2.6,-3.0,-2.2];
+  cuff1 = hfTorusY(x,center,0.6,0.6);
+  center = [-2.6,-3.0,-2.2];
+  cuff2 = hfTorusY(x,center,0.6,0.6);
+  
+  -- hands
+  center =[2.6,-4.3,-2.0];
+  hand1 = hfEllipsoid(x,center,0.8,1.7,2.5) \ (-4.6-y);
+
+  center =[-2.6,-4.3,-2.0];
+  hand2 = hfEllipsoid(x,center,0.8,1.7,2.5) \ (-4.6-y);
+
+  arm = (arm1 | cuff1 | hand1) | (arm2 | cuff2 | hand2);
+
+-- lower half of body
+  -- belt
+  center =[0.0,-1.7,-0.5];
+  belt1 = hfTorusY(x,center,1.9,0.8) \ (-1.6-z);
+  belt2 = hfCylinderY(x,center,1.8);
+
+  belt = belt1 & belt2;
+
+  -- belly
+  center =[0.0,-4.2,-2.0];
+  belly1 = hfEllipsoid(x,center,4.0,2.9,5.0) \ (-4.6-y) \ (-2.0-z);
+  belly2 = hfEllipsoid(x,center,4.0,2.9,1.0) \ (-4.6-y);
+  
+  belly = belly1 | belly2;
+
+  body2 = belt | belly;
+  body = hfBlendUni(body1,body2,1.0,0.1,0.1);
+
+-- leg
+  center =[0.0,-4.0,19.8];
+  leg1 = hfTorusY(x,center,20,1.5) & (xx + 4.5) & (4.5-xx);
+  
+  center = [4.5,-4.0,0.0];
+  hem1 = hfTorusX(x,center,1.6,0.4);
+  center = [-4.5,-4.0,0.0];
+  hem2 = hfTorusX(x,center,1.6,0.4);
+
+  center = [5.9,-3.0,0.0];
+  boots1 = hfEllipsoid(x,center,1.5,3.5,1.9) \ (xx - 5.9) \ (-6.0-y);
+  center = [-5.9,-3.0,0.0];
+  boots2 = hfEllipsoid(x,center,1.5,3.5,1.9) \ (-5.9-xx) \ (-6.0-y);
+
+  leg = leg1 | hem1 | hem2 | boots1 | boots2;
+  
+  my_model = cap | ear | head | body | arm | leg;
+}
+

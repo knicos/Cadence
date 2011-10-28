@@ -1,0 +1,78 @@
+-- Masashi Mizota, graduate school, Hosei Univewrsity, 2004 
+Body(x[3], a[1])
+{
+  array xt[3];
+  array vec_back[12], S_back[3];
+  array center_breast[3], radius_breast[1], theta_breast[1], axis_breast[3], angle_breast[1], S_breast[1];
+  array vec_Rshould[15], S_Rshould[4], vec_Lshould[15], S_Lshould[4];
+
+  xt[1]=x[1]; xt[2]=x[2]+13; xt[3]=x[3];
+
+--- backbone ---------------------------------
+  vec_back = [
+	0, 25, -1,
+	0, 16, -3,
+	0, 10, -4,
+	0, 0,  -4
+  ];
+  S_back = [0.9,0.9,0.8];
+  backbone = hfConvCurve(xt, vec_back, S_back, 0.9);
+
+--- breastbone -------------------------------
+  center_breast  = [    0.0, 15.0, 0.0  ];
+  radius_breast =  [    3.0  ];
+  theta_breast  = [    330.0  ];
+  axis_breast   = [    1.0, 0.0, 0.0   ];
+  angle_breast  = [    90.0  ];
+  S_breast = [    0.7   ];
+
+  tmp = hfRotate3DY(xt, 180.2);
+  breast1 = hfConvArc(xt, center_breast, radius_breast, theta_breast, axis_breast, angle_breast, S_breast, 0.5);
+  
+  center_breast = [    0.0, 12.0, 0.0  ];
+  radius_breast =  [    4.0  ];
+  theta_breast  = [    330.0  ];
+  S_breast = [    0.6   ];  
+  breast2 = hfConvArc(xt, center_breast, radius_breast, theta_breast, axis_breast, angle_breast, S_breast, 0.5);
+  
+  center_breast = [    0.0, 9.0, 0.0  ];
+  radius_breast =  [    4.5  ];
+  theta_breast  = [    330.0  ];
+  S_breast = [    0.56   ];
+  breast3 = hfConvArc(xt, center_breast, radius_breast, theta_breast, axis_breast, angle_breast, S_breast, 0.5);
+  
+  center_breast = [    0.0, 6.0, 0.0  ];
+  radius_breast =  [    4.8  ];
+  theta_breast  = [    330.0  ];
+  breast4 = hfConvArc(xt, center_breast, radius_breast, theta_breast, axis_breast, angle_breast, S_breast, 0.5);
+
+  breastbone =  breast1 | breast2 | breast3 | breast4;
+
+--- shoulder -------------------------------------
+  xt[1]=x[1]; xt[2]=x[2]+13; xt[3]=x[3];
+
+  vec_Rshould = [
+	0, 16,	 2,
+	3, 16.5,	 1,
+	6, 17,	 0,
+	3, 16.5,	 -2,
+	0, 16,	 -3
+  ];
+  S_Rshould = [1,1,1,1];
+  Rshould = hfConvCurve(xt, vec_Rshould, S_Rshould, 1);
+
+  vec_Lshould = [
+	0, 16,	 2,
+	-3, 16.5,	 1,
+	-6, 17,	 0,
+	-3, 16.5,	 -2,
+	0, 16,	 -3
+  ];
+  S_Lshould = [1,1,1,1];
+  Lshould = hfConvCurve(xt, vec_Lshould, S_Lshould, 1);
+  shoulder = Rshould | Lshould;
+
+-------Main------------------------------
+  Body = backbone | breastbone | shoulder;
+
+}

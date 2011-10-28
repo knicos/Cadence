@@ -1,0 +1,28 @@
+SHELL=/bin/sh
+
+CC=@CC@
+CPP=@CXX@
+CPPFLAGS=@CXXFLAGS@
+LDFLAGS=@LDFLAGS@ 
+INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include -I@top_srcdir@/modules/wgd_base_2d/include -I@top_srcdir@/modules/wgd_base/include -I@top_srcdir@/modules/wgd_resources_base/include -I@top_srcdir@/modules/wgd_base_3d/include
+
+SOURCESC=Bezier.c hfA_CheckerBoard.c hfA_Circles.c hfA_Crackles.c hfA_HSVToRGB.c hfA_lerp.c hfA_LookUpTable.c hfA_noiseg.c hfA_noisep.c hfA_RGBToHSV.c hfArrayInput.c hfA_SetAttributes.c hfA_SetColor.c hfA_SmoothLookUpTable.c hfA_spline.c hfA_ToolBox.c hfA_turbulence.c hfA_Union.c hfA_Wave.c hfBezierPatch.c hfBezierVolume.c hfblendint.c hfblendintsardef.c hfblenduni.c hfblendunisardef.c hfblobby.c hfblock.c hfbsp.c hfBSplineVolume.c hfConeX.c hfConeY.c hfConeZ.c hfConvArc.c hfConvCurve.c hfConvLine.c hfconvliner.c hfConvMesh.c hfConvPoint.c hfConvTriangle.c hfCubicBSpline.c hfcylinderx.c hfcylindery.c hfcylinderz.c hfDblock.c hfDConeX.c hfDConeY.c hfDConeZ.c hfDCylinder.c hfDEllipsoid.c hfDTorusx.c hfDTorusy.c hfDTorusz.c hfEllConeX.c hfEllConeY.c hfEllConeZ.c hfellcylx.c hfellcyly.c hfellcylz.c hfellipsoid.c hffmapblob.c hfmetaball.c hfNoiseG.c hfrotate3dx.c hfrotate3dy.c hfrotate3dz.c hfSardefIntersection.c hfSardefSubtraction.c hfSardefUnion.c hfscale3d.c hfshift3d.c hfsoft.c hfSpaceMapCubic.c hfSpaceMapExp.c hfsphere.c hfstretch3d.c hfSuperell.c hftaperx.c hftapery.c hftaperz.c hftorusx.c hftorusy.c hftorusz.c hftwistx.c hftwisty.c hftwistz.c hfvoxel.c int_array.c int_calc.c int_global.c int_list.c int_parse_N.c int_scanner.c int_serial.c myfunc.c quartic.c sardf.c SplineFunc.c
+SOURCESCPP=hfdc_comp.cpp hfdc_dcgenerator.cpp hfdc_quadmesh.cpp hf_draw.cpp hf_error.cpp hfinterpreter.cpp hfpcommandline.cpp hfpm_addface.cpp hfpm_calc.cpp hfpm_createnormals.cpp hfpm_createtriangles.cpp hfpm_fillindex.cpp hfpm_fillmatrix.cpp hfpm_fillvertices.cpp hfpm_graphbuild.cpp hfpm_normalsearch.cpp hfpm_Refine.cpp hfpm_storecell.cpp hfpm_tracegraph.cpp hfpm_tridata.cpp hfpolymesh.cpp hfppovout.cpp hfpstlout.cpp hfpvrmlout.cpp hftimer.cpp hyperfun.cpp mainapp.cpp main.cpp
+OBJECTSCPP=$(SOURCESCPP:.cpp=.o)
+OBJECTSC=$(SOURCESC:.c=.o)
+LIB=libcadence_hyperfun.so
+
+all: $(SOURCES) $(LIB)
+
+$(LIB): $(OBJECTSCPP) $(OBJECTSC)
+	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTSCPP) $(OBJECTSC) @WGDLIBS@ -L../../wgd_base -L../../wgd_base_3d -L../../wgd_resources_base -lcadence_wgd_base -lcadence_wgd_base_3d -lcadence_wgd_resources_base -lXmu
+
+
+.cpp.o:
+	$(CPP) -fPIC -c $(CPPFLAGS) $(INCLUDES) $< -o $@
+	
+.c.o:
+	gcc -fPIC -c $(CPPFLAGS) $(INCLUDES) $< -o $@
+
+clean:
+	rm *.o

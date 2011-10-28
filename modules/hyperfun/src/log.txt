@@ -1,0 +1,248 @@
+In file included from hf_draw.cpp:32:
+/dcs/pg07/nick/Downloads/glut-3.7/glut-3.7/include/GL/glut.h:63:1: warning: "APIENTRY" redefined
+In file included from hf_draw.cpp:30:
+/usr/include/GL/gl.h:113:1: warning: this is the location of the previous definition
+In file included from ../polygon_engine_lib/hfdc_dcgenerator.h:4,
+                 from mainapp.h:56,
+                 from main.h:39,
+                 from hf_draw.cpp:34:
+../polygon_engine_lib/hfdc_comp.h: In static member function ‘static float* COMP::vector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:507: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int* COMP::ivector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:517: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘unsigned char* COMP::cvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:527: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘long unsigned int* COMP::lvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:537: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double* COMP::dvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:547: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::matrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:559: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:565: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double** COMP::dmatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:583: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:589: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int** COMP::imatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:607: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:614: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::submatrix(float**, long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:633: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::convert_matrix(float*, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:655: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float*** COMP::f3tensor(long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:674: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:680: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:686: warning: deprecated conversion from string constant to ‘char*’
+In file included from hf_key.cpp:33:
+/dcs/pg07/nick/Downloads/glut-3.7/glut-3.7/include/GL/glut.h:63:1: warning: "APIENTRY" redefined
+In file included from hf_key.cpp:31:
+/usr/include/GL/gl.h:113:1: warning: this is the location of the previous definition
+In file included from ../polygon_engine_lib/hfdc_dcgenerator.h:4,
+                 from mainapp.h:56,
+                 from hf_key.cpp:39:
+../polygon_engine_lib/hfdc_comp.h: In static member function ‘static float* COMP::vector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:507: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int* COMP::ivector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:517: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘unsigned char* COMP::cvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:527: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘long unsigned int* COMP::lvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:537: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double* COMP::dvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:547: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::matrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:559: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:565: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double** COMP::dmatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:583: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:589: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int** COMP::imatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:607: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:614: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::submatrix(float**, long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:633: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::convert_matrix(float*, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:655: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float*** COMP::f3tensor(long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:674: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:680: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:686: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp: In function ‘void displaytext()’:
+hf_key.cpp:75: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:76: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:77: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:78: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:79: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:80: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:81: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:82: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:83: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:84: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:85: warning: deprecated conversion from string constant to ‘char*’
+hf_key.cpp:86: warning: deprecated conversion from string constant to ‘char*’
+In file included from hf_mouse.cpp:35:
+/dcs/pg07/nick/Downloads/glut-3.7/glut-3.7/include/GL/glut.h:63:1: warning: "APIENTRY" redefined
+In file included from hf_mouse.cpp:31:
+/usr/include/GL/gl.h:113:1: warning: this is the location of the previous definition
+In file included from ../polygon_engine_lib/hfdc_dcgenerator.h:4,
+                 from mainapp.h:56,
+                 from hfppovout.cpp:29:
+../polygon_engine_lib/hfdc_comp.h: In static member function ‘static float* COMP::vector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:507: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int* COMP::ivector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:517: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘unsigned char* COMP::cvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:527: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘long unsigned int* COMP::lvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:537: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double* COMP::dvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:547: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::matrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:559: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:565: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double** COMP::dmatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:583: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:589: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int** COMP::imatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:607: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:614: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::submatrix(float**, long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:633: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::convert_matrix(float*, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:655: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float*** COMP::f3tensor(long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:674: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:680: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:686: warning: deprecated conversion from string constant to ‘char*’
+In file included from ../polygon_engine_lib/hfdc_dcgenerator.h:4,
+                 from mainapp.h:56,
+                 from hfpstlout.cpp:27:
+../polygon_engine_lib/hfdc_comp.h: In static member function ‘static float* COMP::vector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:507: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int* COMP::ivector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:517: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘unsigned char* COMP::cvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:527: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘long unsigned int* COMP::lvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:537: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double* COMP::dvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:547: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::matrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:559: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:565: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double** COMP::dmatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:583: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:589: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int** COMP::imatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:607: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:614: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::submatrix(float**, long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:633: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::convert_matrix(float*, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:655: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float*** COMP::f3tensor(long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:674: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:680: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:686: warning: deprecated conversion from string constant to ‘char*’
+hfpstlout.cpp: In member function ‘void CMainApp::stlBinaryOut()’:
+hfpstlout.cpp:181: error: ‘strcpy’ was not declared in this scope
+In file included from ../polygon_engine_lib/hfdc_dcgenerator.h:4,
+                 from mainapp.h:56,
+                 from hfpvrmlout.cpp:30:
+../polygon_engine_lib/hfdc_comp.h: In static member function ‘static float* COMP::vector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:507: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int* COMP::ivector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:517: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘unsigned char* COMP::cvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:527: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘long unsigned int* COMP::lvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:537: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double* COMP::dvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:547: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::matrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:559: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:565: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double** COMP::dmatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:583: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:589: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int** COMP::imatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:607: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:614: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::submatrix(float**, long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:633: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::convert_matrix(float*, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:655: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float*** COMP::f3tensor(long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:674: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:680: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:686: warning: deprecated conversion from string constant to ‘char*’
+In file included from ../polygon_engine_lib/hfdc_dcgenerator.h:4,
+                 from mainapp.h:56,
+                 from mainapp.cpp:32:
+../polygon_engine_lib/hfdc_comp.h: In static member function ‘static float* COMP::vector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:507: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int* COMP::ivector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:517: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘unsigned char* COMP::cvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:527: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘long unsigned int* COMP::lvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:537: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double* COMP::dvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:547: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::matrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:559: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:565: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double** COMP::dmatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:583: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:589: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int** COMP::imatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:607: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:614: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::submatrix(float**, long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:633: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::convert_matrix(float*, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:655: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float*** COMP::f3tensor(long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:674: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:680: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:686: warning: deprecated conversion from string constant to ‘char*’
+In file included from main.cpp:40:
+/dcs/pg07/nick/Downloads/glut-3.7/glut-3.7/include/GL/glut.h:63:1: warning: "APIENTRY" redefined
+In file included from main.cpp:34:
+/usr/include/GL/gl.h:113:1: warning: this is the location of the previous definition
+In file included from ../polygon_engine_lib/hfdc_dcgenerator.h:4,
+                 from mainapp.h:56,
+                 from main.h:39,
+                 from main.cpp:42:
+../polygon_engine_lib/hfdc_comp.h: In static member function ‘static float* COMP::vector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:507: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int* COMP::ivector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:517: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘unsigned char* COMP::cvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:527: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘long unsigned int* COMP::lvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:537: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double* COMP::dvector(long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:547: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::matrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:559: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:565: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘double** COMP::dmatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:583: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:589: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘int** COMP::imatrix(long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:607: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:614: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::submatrix(float**, long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:633: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float** COMP::convert_matrix(float*, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:655: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h: In member function ‘float*** COMP::f3tensor(long int, long int, long int, long int, long int, long int)’:
+../polygon_engine_lib/hfdc_comp.h:674: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:680: warning: deprecated conversion from string constant to ‘char*’
+../polygon_engine_lib/hfdc_comp.h:686: warning: deprecated conversion from string constant to ‘char*’
+In file included from trackball.cpp:10:
+/dcs/pg07/nick/Downloads/glut-3.7/glut-3.7/include/GL/glut.h:63:1: warning: "APIENTRY" redefined
+In file included from /dcs/pg07/nick/Downloads/glut-3.7/glut-3.7/include/GL/glut.h:58,
+                 from trackball.cpp:10:
+/usr/include/GL/gl.h:113:1: warning: this is the location of the previous definition

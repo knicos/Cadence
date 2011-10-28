@@ -1,0 +1,123 @@
+-- Tomoyuki Nieda, graduate school, Hosei University, 2004
+ 
+hand(x[3], a[3]){
+
+	-- variable difinition
+
+	array center[3];
+	array point[12];
+	array property[5];
+	array xt[3];
+
+	-- palm object
+
+	center = [0, 0.5, 0];
+	se = hfSuperell(x, center, 8, 2.5, 8, 0.3, 0.3);
+	
+	center = [0, -0.5, 0];
+	el_cly = hfEllCylZ(x, center, 4, 2);
+	
+	wrist = el_cly & (8-x[3]) & (x[3]+20);
+
+	center = [0, 3.5, 0];
+	el1 = hfEllipsoid(x, center, 8, 1, 8);
+	
+	center = [-2, 3.5, 0];
+	el2 = hfEllipsoid(x, center, 8, 1, 8);
+
+	center = [2, 3.5, 0];
+	el3 = hfEllipsoid(x, center, 8, 1, 8);
+
+	center = [-0.5, 3.5, -2];
+	el4 = hfEllipsoid(x, center, 8, 1, 8);
+
+	el = el1 | el2 | el3 | el4;
+	
+	palm = hfBlendUni(se, wrist, 5, 2, 2) \ el;
+
+	-- sum object
+
+	xt[1]=x[1];
+	xt[2]=x[2];
+	xt[3]=x[3];
+
+	point = [-1.0, 3.0 , 8.0, 
+			 0.0, 3.0, 0.0, 
+			 3.0, 4.0, 8.0, 
+			 4.0, 5.0, 15.0];
+	property = [0.8, 0.8, 0.8, 0.7, 0.8];
+	
+	tmp = hfShift3D(xt, 12.0, 0.0, -6.0);
+
+	sum = hfConvCurve(xt, point, property, 0.5);
+
+	-- forefinger object
+
+	xt[1]=x[1];
+	xt[2]=x[2];
+	xt[3]=x[3];
+
+	point = [0.0, 0.0 , 0.0, 
+			 2.0, -1.0, 7.0, 
+			 3.0, 2.0, 12.0, 
+			 4.0, 4.0, 16.0];
+	property = [0.8, 0.8, 0.8, 0.7, 0.8];
+	
+	tmp = hfShift3D(xt, 7.0 , 0.0, 6.0);
+
+	forefinger = hfConvCurve(xt, point, property, 0.5);
+
+	-- middle finger object
+
+	xt[1]=x[1];
+	xt[2]=x[2];
+	xt[3]=x[3];
+
+	point = [0.0, 0.0 , 0.0, 
+			 0.5, -1.0, 9.0, 
+			 0.8, 2.0, 15.0, 
+			 1.0, 4.0, 20.0];
+	property = [0.8, 0.8, 0.8, 0.7, 0.8];
+	
+	tmp = hfShift3D(xt, 2.0 , 0.0, 6.0);
+
+	middle_finger = hfConvCurve(xt, point, property, 0.5);
+
+	-- third finger object
+
+	xt[1]=x[1];
+	xt[2]=x[2];
+	xt[3]=x[3];
+
+	point = [0.0, 0.0 , 0.0, 
+			 -0.5, -1.0, 4.0, 
+			 -0.7, 3.0, 10.0, 
+			 -1.0, 8.0, 16.0];
+	property = [0.8, 0.8, 0.8, 0.7, 0.8];
+	
+	tmp = hfShift3D(xt, -3.0 , 0.0, 8.0);
+
+	third_finger = hfConvCurve(xt, point, property, 0.5);
+
+	-- little finger object
+
+	xt[1]=x[1];
+	xt[2]=x[2];
+	xt[3]=x[3];
+
+	point = [0.0, 0.0 , 0.0, 
+			 -1.0, -1.0, 4.0, 
+			 -2.0, 2.0, 8.0, 
+			 -3.0, 4.0, 14.0];
+	property = [0.8, 0.8, 0.8, 0.7, 0.8];
+	
+	tmp = hfShift3D(xt, -7.5 , 0.0, 6.0);
+
+	little_finger = hfConvCurve(xt, point, property, 0.5);
+
+	-- hand object
+
+	blend = hfBlendUni(palm, sum, 5, 2, 2);
+	
+	hand = blend | forefinger | middle_finger | third_finger | little_finger;
+}

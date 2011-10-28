@@ -1,0 +1,11 @@
+-- example2.hf
+
+my_model(x[3], a[1])
+{
+  array center[3];
+
+  center = [0.0, 0.0, 0.0];
+  sphere = hfSphere(x, center, 5.0);
+  my_model = sphere;
+}
+

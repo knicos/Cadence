@@ -1,0 +1,82 @@
+%include "wgd/wgd.dasm";
+%include "hyperfun/hyperfun.dasm";
+@sgwidget = (new union (@prototypes widget)
+	x = 0
+	y = 0
+	width is {@window width} 
+	height is {@window height}
+);
+.widgets root = (@sgwidget);
+@sgwidget children cam1 = (new
+	type = WViewport
+	x = 0
+	y = 20
+	#parent = (this widgets root children stargate)
+	width := { @sgwidget width }
+	height := { @sgwidget height - 20 }
+	visible = true
+
+	#source = (this bloom 10)
+
+	scene = (new
+			type = Scene3D
+			instances = (new)
+		)
+
+	camera = (@camera = (new)
+			type = Camera3D
+			fov = 60.0
+			near = 1.0
+			far = 100.0
+
+			up := { @keyboard keys up }
+			left := { @keyboard keys left }
+			down := { @keyboard keys down }
+			right := { @keyboard keys right }
+			
+			dup := { if (.up) {-1.6} else {0.0} }
+			dleft := { if (.left) {1.6} else {0.0} }
+			ddown := { if (.down) {1.6} else {0.0} }
+			dright := { if (.right) {-1.6} else {0.0} }
+			
+			scalexz := {
+				@math cos (.orientation x)
+			}
+		
+			deltax := {
+				@math sin (.orientation y - 1.5707) * (.dleft + (.dright)) +
+				(@math cos (.orientation y - 1.5707) * (.dup + (.ddown)) * (.scalexz))
+			}
+			
+			deltay := {
+				@math sin (.orientation x) * (.dup + (.ddown)) * -1.0
+			}
+			
+			deltaz := { 
+				@math sin (.orientation y) * (.dleft + (.dright)) +
+				(@math cos (.orientation y) * (.dup + (.ddown)) * (.scalexz))
+			}
+			
+			
+			position = (new x = 0.0 y = 0.0 z = 3.0
+				x := { .x + (@root itime * (@camera deltax)) }
+				y := { .y + (@root itime * (@camera deltay)) }
+				z := { .z + (@root itime * (@camera deltaz)) }
+			)
+			
+			mousex := { if(@mouse grab) { @mouse deltax } else {0} }
+			mousey := { if(@mouse grab) { @mouse deltay } else {0} }
+			
+			orientation = (new x = 0.0 y = 0.0 z = 0.0
+				x := { .x - (@root itime * (@camera mousey)) }
+				y := { .y - (@root itime * (@camera mousex)) }
+			)
+		)
+
+	children = (new)
+);
+@i = (@sgwidget children cam1 scene instances);
+@i m = (new
+	type = IHyperFun
+	file = (new type=LocalFile filename="data/hyperfun/mouse.hf")
+);

@@ -1,0 +1,17 @@
+my_model(x[3], a[1])
+{
+  array xt[3];
+  pi = 3.14159;
+  deg2rad = pi/180.0;
+
+  sphere1 = 3.0^2 - ((x[1] - 5)^2 + x[2]^2 + x[3]^2);
+
+  xt[1] = x[1]*cos(deg2rad*90.0) + x[2]*sin(deg2rad*90.0);
+  xt[2] = x[2]*cos(deg2rad*90.0) - x[1]*sin(deg2rad*90.0);
+  xt[3] = x[3];
+
+  sphere2 = 3.0^2 - ((xt[1] - 5)^2 + xt[2]^2 + xt[3]^2);
+    
+  my_model = sphere1 | sphere2;
+}
+
