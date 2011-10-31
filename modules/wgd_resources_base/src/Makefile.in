@@ -6,14 +6,14 @@ CPPFLAGS=@CXXFLAGS@
 LDFLAGS=@LDFLAGS@
 INCLUDES=-I@top_srcdir@/libcadence/include -I@top_builddir@/libcadence/include -I@top_srcdir@/modules/wgd_base/include -I@top_srcdir@/modules/wgd_resources_base/include
 
-SOURCES=font.cpp material.cpp rendertarget.cpp resources_base.cpp scenegraph.cpp shader.cpp sprite.cpp spritefont.cpp texture.cpp texturebmp.cpp texturepng.cpp texturetga.cpp ./png/png.cpp ./png/pngerror.cpp ./png/pnggccrd.cpp ./png/pngget.cpp ./png/pngmem.cpp ./png/pngpread.cpp ./png/pngread.cpp ./png/pngrio.cpp ./png/pngrtran.cpp ./png/pngrutil.cpp ./png/pngset.cpp ./png/pngtrans.cpp ./zlib/adler32.cpp ./zlib/crc32.cpp ./zlib/deflate.cpp ./zlib/infback.cpp ./zlib/inffast.cpp ./zlib/inflate.cpp ./zlib/inftrees.cpp ./zlib/trees.cpp ./zlib/uncompr.cpp ./zlib/zutil.cpp
+SOURCES=font.cpp material.cpp rendertarget.cpp resources_base.cpp scenegraph.cpp shader.cpp sprite.cpp spritefont.cpp texture.cpp texturebmp.cpp texturepng.cpp texturetga.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 LIB=libcadence_wgd_resources_base.so
 
 all: $(SOURCES) $(LIB)
 
 $(LIB): $(OBJECTS)
-	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS) @WGDLIBS@ -L../../wgd_base -lcadence_wgd_base
+	$(CPP) --shared $(LDFLAGS) -o ../$@ $(OBJECTS) @WGDLIBS@ -L../../wgd_base -lcadence_wgd_base -lpng
 
 
 .cpp.o:

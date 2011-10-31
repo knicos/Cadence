@@ -1,6 +1,6 @@
 #include <wgd/texturepng.h>
 #include <wgd/texture.h>
-#include <wgd/png/png.h>
+#include <png.h>
 #include <stdlib.h>
 #include <string.h>
 
